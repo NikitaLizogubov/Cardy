@@ -11,13 +11,15 @@ protocol RootView: AnyObject {
     
 }
 
-final class RootViewControllerImpl: UIViewController {
+final class RootViewController: UIViewController {
     
     // MARK: -
     
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
+            collectionView.register(TemplateCollectionViewCell.nib, forCellWithReuseIdentifier: TemplateCollectionViewCell.reuseIdentifier)
             collectionView.dataSource = self
+            collectionView.delegate = self
         }
     }
     
@@ -37,6 +39,8 @@ final class RootViewControllerImpl: UIViewController {
     
     private func initilizeComponents() {
         guard let presenter = presenter else { return }
+        
+        navigationItem.title = presenter.navigationTitle
 
         view.backgroundColor = presenter.backgroundColor
     }
@@ -45,20 +49,39 @@ final class RootViewControllerImpl: UIViewController {
 
 // MARK: - UICollectionViewDataSource
 
-extension RootViewControllerImpl: UICollectionViewDataSource {
+extension RootViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        presenter?.numberOfItemsInSection ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        UICollectionViewCell()
+        guard let viewModel = presenter?.cellViewModel(for: indexPath) else { return UICollectionViewCell() }
+        
+        switch viewModel {
+        case let viewModel as TemplateCollectionViewCellViewModelType:
+            let cell = TemplateCollectionViewCell.make(collectionView, for: indexPath)
+            cell.viewModel = viewModel
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension RootViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.didSelectCell(for: indexPath)
     }
     
 }
 
 // MARK: - RootView
 
-extension RootViewControllerImpl: RootView {
+extension RootViewController: RootView {
     
 }

@@ -28,7 +28,7 @@ final class RootCoordinatorImpl: Coordinator {
     // MARK: - Override
     
     override func start() {
-        let viewController = RootViewControllerImpl()
+        let viewController = RootViewController()
         let presenter = RootPresenterImpl(coordinator: self, view: viewController)
         viewController.presenter = presenter
         
@@ -47,7 +47,7 @@ final class RootCoordinatorImpl: Coordinator {
 extension RootCoordinatorImpl: RootCoordinator {
     
     func navigateToCreateNewProject() {
-        
+        print(#function)
     }
     
 }

@@ -8,6 +8,12 @@
 import UIKit
 
 protocol RootPresenter {
+    var navigationTitle: String { get }
+    var numberOfItemsInSection: Int { get }
+    
+    func cellViewModel(for: IndexPath) -> CollectionCellViewModel
+    func didSelectCell(for: IndexPath)
+    
     var backgroundColor: UIColor { get }
 }
 
@@ -30,6 +36,22 @@ final class RootPresenterImpl {
 // MARK: - RootPresenter
 
 extension RootPresenterImpl: RootPresenter {
+    
+    var navigationTitle: String {
+        "!-!Templates"
+    }
+    
+    var numberOfItemsInSection: Int {
+        1
+    }
+    
+    func cellViewModel(for: IndexPath) -> CollectionCellViewModel {
+        TemplateCollectionViewCellViewModel()
+    }
+    
+    func didSelectCell(for: IndexPath) {
+        coordinator.navigateToCreateNewProject()
+    }
     
     var backgroundColor: UIColor {
         .systemBackground

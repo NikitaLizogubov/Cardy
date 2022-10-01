@@ -8,9 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewControllerImpl" customModule="Сardy" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController" customModule="Сardy" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="awS-Kn-6W5" id="IIT-qu-3SU"/>
+                <outlet property="collectionView" destination="awS-Kn-6W5" id="RSW-Dw-ABH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,10 +33,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
             <constraints>
-                <constraint firstItem="awS-Kn-6W5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="AJi-0y-xSN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="awS-Kn-6W5" secondAttribute="trailing" id="e6R-Gq-CsJ"/>
-                <constraint firstItem="awS-Kn-6W5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="q7y-f2-bxw"/>
-                <constraint firstAttribute="bottom" secondItem="awS-Kn-6W5" secondAttribute="bottom" id="rS3-OK-vhM"/>
+                <constraint firstItem="awS-Kn-6W5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bc7-51-g3A"/>
+                <constraint firstAttribute="bottom" secondItem="awS-Kn-6W5" secondAttribute="bottom" id="PRK-bi-ile"/>
+                <constraint firstItem="awS-Kn-6W5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iGf-Ge-11W"/>
+                <constraint firstItem="awS-Kn-6W5" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="n4W-hD-giu"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
         </view>
