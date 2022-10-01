@@ -17,6 +17,8 @@
 		8D2CE63728E8578D00C74E4F /* CradyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE63628E8578D00C74E4F /* CradyTests.swift */; };
 		8D2CE64128E8578D00C74E4F /* CradyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE64028E8578D00C74E4F /* CradyUITests.swift */; };
 		8D2CE64328E8578D00C74E4F /* CradyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE64228E8578D00C74E4F /* CradyUITestsLaunchTests.swift */; };
+		8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE65028E85D5200C74E4F /* RootCoordinator.swift */; };
+		8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE65528E85D8000C74E4F /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		8D2CE63C28E8578D00C74E4F /* СardyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "СardyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2CE64028E8578D00C74E4F /* CradyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CradyUITests.swift; sourceTree = "<group>"; };
 		8D2CE64228E8578D00C74E4F /* CradyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CradyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8D2CE65028E85D5200C74E4F /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		8D2CE65528E85D8000C74E4F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 		8D2CE61B28E8578C00C74E4F /* Crady */ = {
 			isa = PBXGroup;
 			children = (
+				8D2CE65228E85D6600C74E4F /* Common */,
+				8D2CE65328E85D6B00C74E4F /* Modules */,
 				8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */,
 				8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */,
 				8D2CE62028E8578C00C74E4F /* ViewController.swift */,
@@ -128,6 +134,38 @@
 				8D2CE64228E8578D00C74E4F /* CradyUITestsLaunchTests.swift */,
 			);
 			path = CradyUITests;
+			sourceTree = "<group>";
+		};
+		8D2CE64F28E85D2500C74E4F /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE65028E85D5200C74E4F /* RootCoordinator.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		8D2CE65228E85D6600C74E4F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE65428E85D7400C74E4F /* Coordinator */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8D2CE65328E85D6B00C74E4F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE64F28E85D2500C74E4F /* Root */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		8D2CE65428E85D7400C74E4F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE65528E85D8000C74E4F /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +301,8 @@
 			files = (
 				8D2CE62128E8578C00C74E4F /* ViewController.swift in Sources */,
 				8D2CE62728E8578C00C74E4F /* Crady.xcdatamodeld in Sources */,
+				8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */,
+				8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */,
 				8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */,
 				8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */,
 			);
