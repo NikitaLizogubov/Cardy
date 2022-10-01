@@ -20,6 +20,10 @@ class Coordinator {
         self.parentViewController = parentViewController
     }
     
+    deinit {
+        print("\(self) ---> ☠️")
+    }
+    
     // MARK: - Public methods
     
     func start() {

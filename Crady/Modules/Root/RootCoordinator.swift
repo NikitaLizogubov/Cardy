@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class RootCoordinator: Coordinator {
+protocol RootCoordinator: AnyObject {
+    func navigateToCreateNewProject()
+}
+
+final class RootCoordinatorImpl: Coordinator {
     
     // MARK: - Private properties
     
@@ -24,13 +28,26 @@ final class RootCoordinator: Coordinator {
     // MARK: - Override
     
     override func start() {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .red
+        let viewController = RootViewControllerImpl()
+        let presenter = RootPresenterImpl(coordinator: self, view: viewController)
+        viewController.presenter = presenter
         
-        self.viewController = viewController
+        let navigationController = UINavigationController(rootViewController: viewController)
         
-        window?.rootViewController = viewController
+        self.viewController = navigationController
+        
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+    
+}
+
+// MARK: - RootCoordinator
+
+extension RootCoordinatorImpl: RootCoordinator {
+    
+    func navigateToCreateNewProject() {
+        
     }
     
 }
