@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */; };
 		8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */; };
-		8D2CE62128E8578C00C74E4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE62028E8578C00C74E4F /* ViewController.swift */; };
-		8D2CE62428E8578C00C74E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE62228E8578C00C74E4F /* Main.storyboard */; };
 		8D2CE62728E8578C00C74E4F /* Crady.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE62528E8578C00C74E4F /* Crady.xcdatamodeld */; };
 		8D2CE62928E8578D00C74E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE62828E8578D00C74E4F /* Assets.xcassets */; };
 		8D2CE62C28E8578D00C74E4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE62A28E8578D00C74E4F /* LaunchScreen.storyboard */; };
@@ -42,8 +40,6 @@
 		8D2CE61928E8578C00C74E4F /* Сardy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Сardy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8D2CE62028E8578C00C74E4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8D2CE62328E8578C00C74E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D2CE62628E8578C00C74E4F /* Crady.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Crady.xcdatamodel; sourceTree = "<group>"; };
 		8D2CE62828E8578D00C74E4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D2CE62B28E8578D00C74E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,8 +105,6 @@
 				8D2CE65328E85D6B00C74E4F /* Modules */,
 				8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */,
 				8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */,
-				8D2CE62028E8578C00C74E4F /* ViewController.swift */,
-				8D2CE62228E8578C00C74E4F /* Main.storyboard */,
 				8D2CE62828E8578D00C74E4F /* Assets.xcassets */,
 				8D2CE62A28E8578D00C74E4F /* LaunchScreen.storyboard */,
 				8D2CE62D28E8578D00C74E4F /* Info.plist */,
@@ -274,7 +268,6 @@
 			files = (
 				8D2CE62C28E8578D00C74E4F /* LaunchScreen.storyboard in Resources */,
 				8D2CE62928E8578D00C74E4F /* Assets.xcassets in Resources */,
-				8D2CE62428E8578C00C74E4F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +292,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D2CE62128E8578C00C74E4F /* ViewController.swift in Sources */,
 				8D2CE62728E8578C00C74E4F /* Crady.xcdatamodeld in Sources */,
 				8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */,
 				8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */,
@@ -341,14 +333,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8D2CE62228E8578C00C74E4F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8D2CE62328E8578C00C74E4F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8D2CE62A28E8578D00C74E4F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -487,7 +471,6 @@
 				INFOPLIST_FILE = Crady/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -514,7 +497,6 @@
 				INFOPLIST_FILE = Crady/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
