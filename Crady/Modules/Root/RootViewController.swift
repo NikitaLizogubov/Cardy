@@ -13,7 +13,7 @@ protocol RootView: AnyObject {
 
 final class RootViewController: UIViewController {
     
-    // MARK: -
+    // MARK: - @IBOutlets
     
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {

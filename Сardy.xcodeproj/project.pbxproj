@@ -25,6 +25,10 @@
 		8D2CE66628E866D800C74E4F /* TemplateCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE66528E866D800C74E4F /* TemplateCollectionViewCellViewModel.swift */; };
 		8D2CE66B28E8674800C74E4F /* CollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE66A28E8674800C74E4F /* CollectionCellViewModel.swift */; };
 		8D2CE66D28E8693000C74E4F /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE66C28E8693000C74E4F /* CollectionCell.swift */; };
+		8D2CE67328E86F2000C74E4F /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE67128E86F2000C74E4F /* NewProjectViewController.swift */; };
+		8D2CE67428E86F2000C74E4F /* NewProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE67228E86F2000C74E4F /* NewProjectViewController.xib */; };
+		8D2CE67628E86F2C00C74E4F /* NewProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE67528E86F2C00C74E4F /* NewProjectCoordinator.swift */; };
+		8D2CE67828E86F3500C74E4F /* NewProjectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE67728E86F3500C74E4F /* NewProjectPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,10 @@
 		8D2CE66528E866D800C74E4F /* TemplateCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		8D2CE66A28E8674800C74E4F /* CollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellViewModel.swift; sourceTree = "<group>"; };
 		8D2CE66C28E8693000C74E4F /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		8D2CE67128E86F2000C74E4F /* NewProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
+		8D2CE67228E86F2000C74E4F /* NewProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewProjectViewController.xib; sourceTree = "<group>"; };
+		8D2CE67528E86F2C00C74E4F /* NewProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectCoordinator.swift; sourceTree = "<group>"; };
+		8D2CE67728E86F3500C74E4F /* NewProjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				8D2CE64F28E85D2500C74E4F /* Root */,
+				8D2CE67028E86F0800C74E4F /* NewProject */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -240,6 +249,17 @@
 				8D2CE66A28E8674800C74E4F /* CollectionCellViewModel.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8D2CE67028E86F0800C74E4F /* NewProject */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE67528E86F2C00C74E4F /* NewProjectCoordinator.swift */,
+				8D2CE67728E86F3500C74E4F /* NewProjectPresenter.swift */,
+				8D2CE67128E86F2000C74E4F /* NewProjectViewController.swift */,
+				8D2CE67228E86F2000C74E4F /* NewProjectViewController.xib */,
+			);
+			path = NewProject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +370,7 @@
 				8D2CE62928E8578D00C74E4F /* Assets.xcassets in Resources */,
 				8D2CE66428E8666100C74E4F /* TemplateCollectionViewCell.xib in Resources */,
 				8D2CE65C28E8606300C74E4F /* RootViewController.xib in Resources */,
+				8D2CE67428E86F2000C74E4F /* NewProjectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +396,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D2CE62728E8578C00C74E4F /* Crady.xcdatamodeld in Sources */,
+				8D2CE67828E86F3500C74E4F /* NewProjectPresenter.swift in Sources */,
+				8D2CE67328E86F2000C74E4F /* NewProjectViewController.swift in Sources */,
 				8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */,
 				8D2CE65B28E8606300C74E4F /* RootViewController.swift in Sources */,
 				8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */,
@@ -382,6 +405,7 @@
 				8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */,
 				8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */,
 				8D2CE65E28E861EC00C74E4F /* RootPresenter.swift in Sources */,
+				8D2CE67628E86F2C00C74E4F /* NewProjectCoordinator.swift in Sources */,
 				8D2CE66628E866D800C74E4F /* TemplateCollectionViewCellViewModel.swift in Sources */,
 				8D2CE66D28E8693000C74E4F /* CollectionCell.swift in Sources */,
 				8D2CE66B28E8674800C74E4F /* CollectionCellViewModel.swift in Sources */,
