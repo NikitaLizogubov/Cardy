@@ -9,6 +9,7 @@ import UIKit
 
 protocol NewProjectCoordinator: AnyObject {
     func back()
+    func navigateToAssetPicker(completion: @escaping (UIImage?) -> Void)
 }
 
 final class NewProjectCoordinatorImpl: Coordinator {
@@ -33,6 +34,11 @@ extension NewProjectCoordinatorImpl: NewProjectCoordinator {
     
     func back() {
         (parentViewController as? UINavigationController)?.popViewController(animated: true)
+    }
+    
+    func navigateToAssetPicker(completion: @escaping (UIImage?) -> Void) {
+        let coordinator = AssetPickerCoordinatorImpl(sourceType: .photoLibrary, completion: completion, parentViewController: viewController)
+        coordinator.start()
     }
     
 }

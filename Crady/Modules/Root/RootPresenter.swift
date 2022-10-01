@@ -12,7 +12,6 @@ protocol RootPresenter {
     var numberOfItemsInSection: Int { get }
     
     func cellViewModel(for: IndexPath) -> CollectionCellViewModel
-    func didSelectCell(for: IndexPath)
     
     var backgroundColor: UIColor { get }
 }
@@ -46,11 +45,9 @@ extension RootPresenterImpl: RootPresenter {
     }
     
     func cellViewModel(for: IndexPath) -> CollectionCellViewModel {
-        TemplateCollectionViewCellViewModel()
-    }
-    
-    func didSelectCell(for: IndexPath) {
-        coordinator.navigateToCreateNewProject()
+        TemplateCollectionViewCellViewModel { [unowned self] in
+            coordinator.navigateToCreateNewProject()
+        }
     }
     
     var backgroundColor: UIColor {

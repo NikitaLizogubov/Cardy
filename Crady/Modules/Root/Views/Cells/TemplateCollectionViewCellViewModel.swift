@@ -16,11 +16,25 @@ typealias TemplateCollectionViewCellViewModelType = TemplateCollectionViewCellVi
 
 final class TemplateCollectionViewCellViewModel: CollectionCellViewModel {
     
+    // MARK: - Private properties
     
+    private let selectionHandler: () -> Void
+    
+    // MARK: - Init
+    
+    init(selectionHandler: @escaping () -> Void) {
+        self.selectionHandler = selectionHandler
+    }
+    
+    // MARK: - Public methods
+    
+    func didSelect() {
+        selectionHandler()
+    }
     
 }
 
-// MARK: - RootPresenter
+// MARK: - TemplateCollectionViewCellViewModelInput
 
 extension TemplateCollectionViewCellViewModel: TemplateCollectionViewCellViewModelInput {
     

@@ -34,6 +34,8 @@ extension CollectionCell where Self: UICollectionViewCell {
 
 extension CollectionCell where Self: UITableViewCell {
     
-    // TODO: Add the same for tableView
+    static func make(_ tableView: UITableView, for indexPath: IndexPath) -> Self {
+        tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! Self
+    }
     
 }

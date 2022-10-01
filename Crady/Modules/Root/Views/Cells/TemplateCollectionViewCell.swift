@@ -13,7 +13,6 @@ final class TemplateCollectionViewCell: UICollectionViewCell, CollectionCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
     
-    
     // MARK: - Public properties
     
     var viewModel: TemplateCollectionViewCellViewModelType? {

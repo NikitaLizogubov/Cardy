@@ -75,7 +75,9 @@ extension RootViewController: UICollectionViewDataSource {
 extension RootViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.didSelectCell(for: indexPath)
+        guard let viewModel = presenter?.cellViewModel(for: indexPath) else { return }
+        
+        viewModel.didSelect()
     }
     
 }
