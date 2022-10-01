@@ -101,11 +101,10 @@
 		8D2CE61B28E8578C00C74E4F /* Crady */ = {
 			isa = PBXGroup;
 			children = (
+				8D2CE65728E8600800C74E4F /* ApplicationLifecyle */,
 				8D2CE65228E85D6600C74E4F /* Common */,
 				8D2CE65328E85D6B00C74E4F /* Modules */,
-				8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */,
-				8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */,
-				8D2CE62828E8578D00C74E4F /* Assets.xcassets */,
+				8D2CE65828E8601C00C74E4F /* Resources */,
 				8D2CE62A28E8578D00C74E4F /* LaunchScreen.storyboard */,
 				8D2CE62D28E8578D00C74E4F /* Info.plist */,
 				8D2CE62528E8578C00C74E4F /* Crady.xcdatamodeld */,
@@ -160,6 +159,23 @@
 				8D2CE65528E85D8000C74E4F /* Coordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		8D2CE65728E8600800C74E4F /* ApplicationLifecyle */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */,
+				8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */,
+			);
+			path = ApplicationLifecyle;
+			sourceTree = "<group>";
+		};
+		8D2CE65828E8601C00C74E4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE62828E8578D00C74E4F /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
