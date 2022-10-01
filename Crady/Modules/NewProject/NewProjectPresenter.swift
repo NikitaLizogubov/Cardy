@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol NewProjectPresenter {
     var navigationTitle: String { get }
+    var previewButtonTitle: String { get }
     var numberOfItemsInSection: Int { get }
     
     func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel
+    func didPreview()
     
     var backgroundColor: UIColor { get }
 }
@@ -23,15 +26,17 @@ final class NewProjectPresenterImpl {
     // Injection
     private let coordinator: NewProjectCoordinator
     private weak var view: NewProjectView?
+    private let renderEngine: RenderEngine
     
     // Locale
     private var project: Project
     
     // MARK: - Init
     
-    init(coordinator: NewProjectCoordinator, view: NewProjectView) {
+    init(coordinator: NewProjectCoordinator, view: NewProjectView, renderEngine: RenderEngine) {
         self.coordinator = coordinator
         self.view = view
+        self.renderEngine = renderEngine
         
         self.project = Project()
     }
@@ -44,6 +49,10 @@ extension NewProjectPresenterImpl: NewProjectPresenter {
     
     var navigationTitle: String {
         "!-!Template name"
+    }
+    
+    var previewButtonTitle: String {
+        "!-!Preview"
     }
     
     var numberOfItemsInSection: Int {
@@ -59,6 +68,17 @@ extension NewProjectPresenterImpl: NewProjectPresenter {
                 
                 view?.reloadRow(for: indexPath)
             }
+        }
+    }
+    
+    func didPreview() {
+        renderEngine.makePreviewAsset(project) { [unowned self] in
+            guard let asset = $0 else { return }
+            
+            let playerItem = AVPlayerItem(asset: asset)
+            let player = AVPlayer(playerItem: playerItem)
+            
+            coordinator.navigateToAssetPreview(with: player)
         }
     }
     

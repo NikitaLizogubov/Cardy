@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol NewProjectView: AnyObject {
     func reloadRow(for indexPath: IndexPath)
@@ -42,8 +43,20 @@ final class NewProjectViewController: UIViewController {
         guard let presenter = presenter else { return }
         
         navigationItem.title = presenter.navigationTitle
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: presenter.previewButtonTitle,
+            style: .plain,
+            target: self,
+            action: #selector(didPreview)
+        )
 
         view.backgroundColor = presenter.backgroundColor
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func didPreview(_ sender: Any) {
+        presenter?.didPreview()
     }
 
 }

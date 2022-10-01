@@ -36,7 +36,8 @@
 		8D2CE68528E879B100C74E4F /* AssetPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68428E879B100C74E4F /* AssetPickerCoordinator.swift */; };
 		8D2CE68728E87AE500C74E4F /* AssetPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68628E87AE500C74E4F /* AssetPickerPresenter.swift */; };
 		8D2CE68A28E8806700C74E4F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68928E8806700C74E4F /* Project.swift */; };
-		8D2CE68F28E8835400C74E4F /* Collection+safeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68E28E8835400C74E4F /* Collection+safeIndex.swift */; };
+		8D2CE69328E8EAC800C74E4F /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE69228E8EAC800C74E4F /* RenderEngine.swift */; };
+		8D2CE69528E8EE4B00C74E4F /* ImageConvector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE69428E8EE4B00C74E4F /* ImageConvector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +91,8 @@
 		8D2CE68428E879B100C74E4F /* AssetPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPickerCoordinator.swift; sourceTree = "<group>"; };
 		8D2CE68628E87AE500C74E4F /* AssetPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPickerPresenter.swift; sourceTree = "<group>"; };
 		8D2CE68928E8806700C74E4F /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		8D2CE68E28E8835400C74E4F /* Collection+safeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+safeIndex.swift"; sourceTree = "<group>"; };
+		8D2CE69228E8EAC800C74E4F /* RenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderEngine.swift; sourceTree = "<group>"; };
+		8D2CE69428E8EE4B00C74E4F /* ImageConvector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConvector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +145,9 @@
 			children = (
 				8D2CE65728E8600800C74E4F /* ApplicationLifecyle */,
 				8D2CE65228E85D6600C74E4F /* Common */,
+				8D2CE69028E8EA2900C74E4F /* Services */,
 				8D2CE65328E85D6B00C74E4F /* Modules */,
+				8D2CE68B28E8832B00C74E4F /* Extensions */,
 				8D2CE65828E8601C00C74E4F /* Resources */,
 				8D2CE62A28E8578D00C74E4F /* LaunchScreen.storyboard */,
 				8D2CE62D28E8578D00C74E4F /* Info.plist */,
@@ -185,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				8D2CE66728E8671E00C74E4F /* UIKit */,
-				8D2CE68B28E8832B00C74E4F /* Extensions */,
 				8D2CE65428E85D7400C74E4F /* Coordinator */,
 			);
 			path = Common;
@@ -329,17 +332,25 @@
 		8D2CE68C28E8833300C74E4F /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				8D2CE68D28E8833E00C74E4F /* Collection */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
 		};
-		8D2CE68D28E8833E00C74E4F /* Collection */ = {
+		8D2CE69028E8EA2900C74E4F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8D2CE68E28E8835400C74E4F /* Collection+safeIndex.swift */,
+				8D2CE69128E8EAB800C74E4F /* Render */,
 			);
-			path = Collection;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8D2CE69128E8EAB800C74E4F /* Render */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE69228E8EAC800C74E4F /* RenderEngine.swift */,
+				8D2CE69428E8EE4B00C74E4F /* ImageConvector.swift */,
+			);
+			path = Render;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,14 +491,15 @@
 				8D2CE67D28E8740400C74E4F /* ProjectAssetTableViewCell.swift in Sources */,
 				8D2CE67828E86F3500C74E4F /* NewProjectPresenter.swift in Sources */,
 				8D2CE68A28E8806700C74E4F /* Project.swift in Sources */,
+				8D2CE69328E8EAC800C74E4F /* RenderEngine.swift in Sources */,
 				8D2CE67328E86F2000C74E4F /* NewProjectViewController.swift in Sources */,
 				8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */,
 				8D2CE65B28E8606300C74E4F /* RootViewController.swift in Sources */,
 				8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */,
 				8D2CE66328E8666100C74E4F /* TemplateCollectionViewCell.swift in Sources */,
 				8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */,
-				8D2CE68F28E8835400C74E4F /* Collection+safeIndex.swift in Sources */,
 				8D2CE68028E8741900C74E4F /* ProjectAssetTableViewCellViewModel.swift in Sources */,
+				8D2CE69528E8EE4B00C74E4F /* ImageConvector.swift in Sources */,
 				8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */,
 				8D2CE65E28E861EC00C74E4F /* RootPresenter.swift in Sources */,
 				8D2CE67628E86F2C00C74E4F /* NewProjectCoordinator.swift in Sources */,
