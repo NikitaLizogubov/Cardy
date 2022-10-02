@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RootCoordinator: AnyObject {
-    func navigateToCreateNewProject()
+    func navigateToCreateNewProject(using template: Template)
 }
 
 final class RootCoordinatorImpl: Coordinator {
@@ -46,8 +46,8 @@ final class RootCoordinatorImpl: Coordinator {
 
 extension RootCoordinatorImpl: RootCoordinator {
     
-    func navigateToCreateNewProject() {
-        let coordinator = NewProjectCoordinatorImpl(parentViewController: viewController)
+    func navigateToCreateNewProject(using template: Template) {
+        let coordinator = NewProjectCoordinatorImpl(template: template, parentViewController: viewController)
         coordinator.start()
     }
     

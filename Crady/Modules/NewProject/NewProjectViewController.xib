@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewProjectViewController" customModule="Сardy" customModuleProvider="target">
             <connections>
                 <outlet property="assetsTableView" destination="epB-IT-sNE" id="2uJ-kc-IGl"/>
+                <outlet property="previewImageView" destination="iQC-EZ-Ytl" id="STA-bY-l1d"/>
                 <outlet property="previewView" destination="hW2-RP-vRQ" id="pfN-Ja-OKF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,7 +24,18 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hW2-RP-vRQ">
                     <rect key="frame" x="0.0" y="44" width="414" height="532.5"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iQC-EZ-Ytl">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="532.5"/>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="iQC-EZ-Ytl" secondAttribute="trailing" id="7AX-mv-N0c"/>
+                        <constraint firstItem="iQC-EZ-Ytl" firstAttribute="leading" secondItem="hW2-RP-vRQ" secondAttribute="leading" id="D5d-xP-U76"/>
+                        <constraint firstItem="iQC-EZ-Ytl" firstAttribute="top" secondItem="hW2-RP-vRQ" secondAttribute="top" id="PDj-aA-0ns"/>
+                        <constraint firstAttribute="bottom" secondItem="iQC-EZ-Ytl" secondAttribute="bottom" id="ymS-lJ-1re"/>
+                    </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="epB-IT-sNE">
                     <rect key="frame" x="0.0" y="576.5" width="414" height="319.5"/>

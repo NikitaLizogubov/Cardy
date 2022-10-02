@@ -16,6 +16,18 @@ protocol NewProjectCoordinator: AnyObject {
 
 final class NewProjectCoordinatorImpl: Coordinator {
     
+    // MARK: - Private properties
+    
+    private let template: Template
+    
+    // MARK: - Init
+    
+    init(template: Template, parentViewController: UIViewController?) {
+        self.template = template
+        
+        super.init(parentViewController: parentViewController)
+    }
+    
     // MARK: - Override
     
     override func start() {
@@ -24,6 +36,7 @@ final class NewProjectCoordinatorImpl: Coordinator {
         let presenter = NewProjectPresenterImpl(
             coordinator: self,
             view: viewController,
+            template: template,
             renderEngine: renderEngine
         )
         viewController.presenter = presenter

@@ -8,16 +8,21 @@
 import UIKit
 import AVFoundation
 
-protocol NewProjectPresenter {
+protocol NewProjectPresenterInput {
     var navigationTitle: String { get }
+    var previewImage: UIImage? { get }
     var previewButtonTitle: String { get }
     var numberOfItemsInSection: Int { get }
-    
-    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel
-    func didPreview()
-    
     var backgroundColor: UIColor { get }
 }
+
+protocol NewProjectPresenterOutput {
+    func viewDidLoad()
+    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel
+    func didPreview()
+}
+
+typealias NewProjectPresenter = NewProjectPresenterInput & NewProjectPresenterOutput
 
 final class NewProjectPresenterImpl {
     
@@ -33,22 +38,39 @@ final class NewProjectPresenterImpl {
     
     // MARK: - Init
     
-    init(coordinator: NewProjectCoordinator, view: NewProjectView, renderEngine: RenderEngine) {
+    init(
+        coordinator: NewProjectCoordinator,
+        view: NewProjectView,
+        template: Template,
+        renderEngine: RenderEngine
+    ) {
         self.coordinator = coordinator
         self.view = view
         self.renderEngine = renderEngine
         
-        self.project = Project()
+        self.project = Project(template: template)
+    }
+    
+    // MARK: - Private methods
+    
+    private func updatePreview() {
+        renderEngine.makePreviewFrame(project) { [self] in
+            view?.update(previewImage: $0)
+        }
     }
     
 }
 
-// MARK: - NewProjectPresenter
+// MARK: - NewProjectPresenterInput
 
-extension NewProjectPresenterImpl: NewProjectPresenter {
+extension NewProjectPresenterImpl: NewProjectPresenterInput {
     
     var navigationTitle: String {
-        "!-!Template name"
+        project.template.name
+    }
+    
+    var previewImage: UIImage? {
+        nil
     }
     
     var previewButtonTitle: String {
@@ -59,6 +81,20 @@ extension NewProjectPresenterImpl: NewProjectPresenter {
         3
     }
     
+    var backgroundColor: UIColor {
+        .systemBackground
+    }
+    
+}
+
+// MARK: - NewProjectPresenterOutput
+
+extension NewProjectPresenterImpl: NewProjectPresenterOutput {
+    
+    func viewDidLoad() {
+        updatePreview()
+    }
+    
     func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel {
         ProjectAssetTableViewCellViewModel(asset: project.images[indexPath.row]) { [unowned self] in
             coordinator.navigateToAssetPicker { (image) in
@@ -67,12 +103,14 @@ extension NewProjectPresenterImpl: NewProjectPresenter {
                 project.images[indexPath.row] = image
                 
                 view?.reloadRow(for: indexPath)
+                
+                updatePreview()
             }
         }
     }
     
     func didPreview() {
-        renderEngine.makePreviewAsset(project) { [unowned self] in
+        renderEngine.makePreviewAsset(project) { [self] in
             guard let asset = $0 else { return }
             
             let playerItem = AVPlayerItem(asset: asset)
@@ -80,10 +118,6 @@ extension NewProjectPresenterImpl: NewProjectPresenter {
             
             coordinator.navigateToAssetPreview(with: player)
         }
-    }
-    
-    var backgroundColor: UIColor {
-        .systemBackground
     }
     
 }

@@ -8,5 +8,7 @@
 import UIKit
 
 struct Project {
+    let template: Template
+    
     var images: [UIImage?] = Array(repeating: nil, count: 3)
 }

@@ -11,7 +11,7 @@ protocol RootPresenter {
     var navigationTitle: String { get }
     var numberOfItemsInSection: Int { get }
     
-    func cellViewModel(for: IndexPath) -> CollectionCellViewModel
+    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel
     
     var backgroundColor: UIColor { get }
 }
@@ -20,14 +20,20 @@ final class RootPresenterImpl {
     
     // MARK: - Private properties
     
+    // Injection
     private let coordinator: RootCoordinator
     private weak var view: RootView?
+    
+    // Locale
+    private let templates: [Template]
     
     // MARK: - Init
     
     init(coordinator: RootCoordinator, view: RootView) {
         self.coordinator = coordinator
         self.view = view
+        
+        self.templates = Template.mock
     }
     
 }
@@ -41,12 +47,12 @@ extension RootPresenterImpl: RootPresenter {
     }
     
     var numberOfItemsInSection: Int {
-        1
+        templates.count
     }
     
-    func cellViewModel(for: IndexPath) -> CollectionCellViewModel {
-        TemplateCollectionViewCellViewModel { [unowned self] in
-            coordinator.navigateToCreateNewProject()
+    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel {
+        TemplateCollectionViewCellViewModel(template: templates[indexPath.row]) { [unowned self] in
+            coordinator.navigateToCreateNewProject(using: templates[indexPath.row])
         }
     }
     

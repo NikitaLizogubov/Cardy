@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 
 protocol NewProjectView: AnyObject {
+    func update(previewImage: UIImage?)
     func reloadRow(for indexPath: IndexPath)
 }
 
@@ -17,6 +18,7 @@ final class NewProjectViewController: UIViewController {
     // MARK: - @IBOutlets
     
     @IBOutlet private weak var previewView: UIView!
+    @IBOutlet private weak var previewImageView: UIImageView!
     @IBOutlet private weak var assetsTableView: UITableView! {
         didSet {
             assetsTableView.register(ProjectAssetTableViewCell.nib, forCellReuseIdentifier: ProjectAssetTableViewCell.reuseIdentifier)
@@ -34,6 +36,8 @@ final class NewProjectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presenter?.viewDidLoad()
+        
         initilizeComponents()
     }
     
@@ -41,6 +45,8 @@ final class NewProjectViewController: UIViewController {
     
     private func initilizeComponents() {
         guard let presenter = presenter else { return }
+        
+        previewImageView.image = presenter.previewImage
         
         navigationItem.title = presenter.navigationTitle
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -105,6 +111,10 @@ extension NewProjectViewController: UITableViewDelegate {
 // MARK: - NewProjectView
 
 extension NewProjectViewController: NewProjectView {
+    
+    func update(previewImage: UIImage?) {
+        previewImageView.image = previewImage
+    }
     
     func reloadRow(for indexPath: IndexPath) {
         assetsTableView.reloadRows(at: [indexPath], with: .automatic)

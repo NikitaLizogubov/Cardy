@@ -37,7 +37,12 @@
 		8D2CE68728E87AE500C74E4F /* AssetPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68628E87AE500C74E4F /* AssetPickerPresenter.swift */; };
 		8D2CE68A28E8806700C74E4F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68928E8806700C74E4F /* Project.swift */; };
 		8D2CE69328E8EAC800C74E4F /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE69228E8EAC800C74E4F /* RenderEngine.swift */; };
-		8D2CE69528E8EE4B00C74E4F /* ImageConvector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE69428E8EE4B00C74E4F /* ImageConvector.swift */; };
+		8D2CE6A128E9ADF600C74E4F /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6A028E9ADF600C74E4F /* Template.swift */; };
+		8D2CE6AF28E9B11400C74E4F /* background2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AC28E9B11400C74E4F /* background2.mp4 */; };
+		8D2CE6B028E9B11400C74E4F /* background1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AD28E9B11400C74E4F /* background1.mp4 */; };
+		8D2CE6B128E9B11400C74E4F /* background3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AE28E9B11400C74E4F /* background3.mp4 */; };
+		8D2CE6B328E9D2C700C74E4F /* VideoOverlayProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6B228E9D2C700C74E4F /* VideoOverlayProcessor.swift */; };
+		8D2CE6B628E9D90B00C74E4F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6B528E9D90B00C74E4F /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +97,12 @@
 		8D2CE68628E87AE500C74E4F /* AssetPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPickerPresenter.swift; sourceTree = "<group>"; };
 		8D2CE68928E8806700C74E4F /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		8D2CE69228E8EAC800C74E4F /* RenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderEngine.swift; sourceTree = "<group>"; };
-		8D2CE69428E8EE4B00C74E4F /* ImageConvector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConvector.swift; sourceTree = "<group>"; };
+		8D2CE6A028E9ADF600C74E4F /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		8D2CE6AC28E9B11400C74E4F /* background2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background2.mp4; sourceTree = "<group>"; };
+		8D2CE6AD28E9B11400C74E4F /* background1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background1.mp4; sourceTree = "<group>"; };
+		8D2CE6AE28E9B11400C74E4F /* background3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background3.mp4; sourceTree = "<group>"; };
+		8D2CE6B228E9D2C700C74E4F /* VideoOverlayProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoOverlayProcessor.swift; sourceTree = "<group>"; };
+		8D2CE6B528E9D90B00C74E4F /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +159,7 @@
 				8D2CE65328E85D6B00C74E4F /* Modules */,
 				8D2CE68B28E8832B00C74E4F /* Extensions */,
 				8D2CE65828E8601C00C74E4F /* Resources */,
+				8D2CE6B428E9D8ED00C74E4F /* Utility */,
 				8D2CE62A28E8578D00C74E4F /* LaunchScreen.storyboard */,
 				8D2CE62D28E8578D00C74E4F /* Info.plist */,
 				8D2CE62528E8578C00C74E4F /* Crady.xcdatamodeld */,
@@ -176,6 +187,7 @@
 		8D2CE64F28E85D2500C74E4F /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				8D2CE6A828E9AE8300C74E4F /* Models */,
 				8D2CE65F28E8654600C74E4F /* Views */,
 				8D2CE65028E85D5200C74E4F /* RootCoordinator.swift */,
 				8D2CE65D28E861EC00C74E4F /* RootPresenter.swift */,
@@ -224,6 +236,7 @@
 		8D2CE65828E8601C00C74E4F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D2CE6A228E9AE0600C74E4F /* Backgrounds */,
 				8D2CE62828E8578D00C74E4F /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -348,9 +361,35 @@
 			isa = PBXGroup;
 			children = (
 				8D2CE69228E8EAC800C74E4F /* RenderEngine.swift */,
-				8D2CE69428E8EE4B00C74E4F /* ImageConvector.swift */,
+				8D2CE6B228E9D2C700C74E4F /* VideoOverlayProcessor.swift */,
 			);
 			path = Render;
+			sourceTree = "<group>";
+		};
+		8D2CE6A228E9AE0600C74E4F /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE6AD28E9B11400C74E4F /* background1.mp4 */,
+				8D2CE6AC28E9B11400C74E4F /* background2.mp4 */,
+				8D2CE6AE28E9B11400C74E4F /* background3.mp4 */,
+			);
+			path = Backgrounds;
+			sourceTree = "<group>";
+		};
+		8D2CE6A828E9AE8300C74E4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE6A028E9ADF600C74E4F /* Template.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8D2CE6B428E9D8ED00C74E4F /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				8D2CE6B528E9D90B00C74E4F /* Environment.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,11 +497,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D2CE67E28E8740400C74E4F /* ProjectAssetTableViewCell.xib in Resources */,
+				8D2CE6B128E9B11400C74E4F /* background3.mp4 in Resources */,
+				8D2CE6AF28E9B11400C74E4F /* background2.mp4 in Resources */,
 				8D2CE62C28E8578D00C74E4F /* LaunchScreen.storyboard in Resources */,
 				8D2CE62928E8578D00C74E4F /* Assets.xcassets in Resources */,
 				8D2CE66428E8666100C74E4F /* TemplateCollectionViewCell.xib in Resources */,
 				8D2CE65C28E8606300C74E4F /* RootViewController.xib in Resources */,
 				8D2CE67428E86F2000C74E4F /* NewProjectViewController.xib in Resources */,
+				8D2CE6B028E9B11400C74E4F /* background1.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,18 +530,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D2CE62728E8578C00C74E4F /* Crady.xcdatamodeld in Sources */,
+				8D2CE6B628E9D90B00C74E4F /* Environment.swift in Sources */,
 				8D2CE67D28E8740400C74E4F /* ProjectAssetTableViewCell.swift in Sources */,
 				8D2CE67828E86F3500C74E4F /* NewProjectPresenter.swift in Sources */,
 				8D2CE68A28E8806700C74E4F /* Project.swift in Sources */,
 				8D2CE69328E8EAC800C74E4F /* RenderEngine.swift in Sources */,
+				8D2CE6A128E9ADF600C74E4F /* Template.swift in Sources */,
 				8D2CE67328E86F2000C74E4F /* NewProjectViewController.swift in Sources */,
 				8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */,
 				8D2CE65B28E8606300C74E4F /* RootViewController.swift in Sources */,
 				8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */,
+				8D2CE6B328E9D2C700C74E4F /* VideoOverlayProcessor.swift in Sources */,
 				8D2CE66328E8666100C74E4F /* TemplateCollectionViewCell.swift in Sources */,
 				8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */,
 				8D2CE68028E8741900C74E4F /* ProjectAssetTableViewCellViewModel.swift in Sources */,
-				8D2CE69528E8EE4B00C74E4F /* ImageConvector.swift in Sources */,
 				8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */,
 				8D2CE65E28E861EC00C74E4F /* RootPresenter.swift in Sources */,
 				8D2CE67628E86F2C00C74E4F /* NewProjectCoordinator.swift in Sources */,
@@ -607,7 +651,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -662,7 +706,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -679,6 +723,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HS7MB89MW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Crady/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -686,7 +731,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -707,6 +752,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HS7MB89MW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Crady/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -714,7 +760,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
