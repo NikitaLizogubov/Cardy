@@ -17,11 +17,13 @@ final class RenderEngineImpl {
     
     // MARK: - Private properties
     
+    private let fileManager: FileManager
     private let renderLayerFactory: RenderLayeFactory
     
     // MARK: - Init
     
-    init(renderLayerFactory: RenderLayeFactory = RenderLayeFactoryImpl()) {
+    init(fileManager: FileManager = .default, renderLayerFactory: RenderLayeFactory = RenderLayeFactoryImpl()) {
+        self.fileManager = fileManager
         self.renderLayerFactory = renderLayerFactory
     }
     
@@ -87,13 +89,11 @@ extension RenderEngineImpl: RenderEngine {
             return
         }
 
-        // TODO: - Remove !
         addVideoAssets([project.template.asset!], for: videoTrack)
+        
+        let documentDirectoryURL = fileManager.makeTampDirectory("result.mp4")
 
-        let documentDirectory = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
-        let documentDirectoryURL = URL(fileURLWithPath: documentDirectory).appendingPathComponent("result.mp4")
-
-        removeFileIfExists(documentDirectoryURL)
+        fileManager.removeFileIfExists(documentDirectoryURL)
 
         let videoComposition = makeVideoComposition(project, for: videoTrack)
 
@@ -101,17 +101,6 @@ extension RenderEngineImpl: RenderEngine {
             let asset = AVAsset(url: $0)
 
             completion(asset)
-        }
-    }
-    
-    // TODO: - Add error handling
-    private func removeFileIfExists(_ documentDirectoryURL: URL) {
-        do {
-            if FileManager.default.fileExists(atPath: documentDirectoryURL.path) {
-                try FileManager.default.removeItem(at: documentDirectoryURL)
-            }
-        } catch {
-            print(error)
         }
     }
     

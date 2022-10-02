@@ -21,8 +21,11 @@ struct RenderLayeFactoryImpl { }
 extension RenderLayeFactoryImpl: RenderLayeFactory {
     
     func makeImageLayers(_ images: [UIImage], positions: [CGPoint], for track: AVMutableCompositionTrack) -> [CALayer] {
-        images.enumerated().map({ (index, image) in
-            let frame = CGRect(origin: positions[index], size: CGSize(width: 400.0, height: 400.0)) 
+        let trackSize = track.naturalSize
+        
+        return images.enumerated().map({ (index, image) in
+            let point = CGPoint(x: trackSize.width - positions[index].x, y: trackSize.height - positions[index].y)
+            let frame = CGRect(origin: point, size: CGSize(width: 400.0, height: 400.0))
             
             let imageLayer = CALayer()
             imageLayer.contents = image.cgImage

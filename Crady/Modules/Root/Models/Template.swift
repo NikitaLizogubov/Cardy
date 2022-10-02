@@ -29,9 +29,9 @@ struct Template {
                 name: "Template 1",
                 backgroundURL: Bundle.main.url(forResource: "background1", withExtension: ".mp4"),
                 imageFragments: [
-                    ImageFragment(position: .zero),
-                    ImageFragment(position: CGPoint(x: 400.0, y: 400.0)),
-                    ImageFragment(position: CGPoint(x: .zero, y: 800.0))
+                    ImageFragment(position: CGPoint(x: 1040.0, y: 440.0)),
+                    ImageFragment(position: CGPoint(x: 800.0, y: 840.0)),
+                    ImageFragment(position: CGPoint(x: 1040.0, y: 1200.0))
                 ]
             ),
             Template(
