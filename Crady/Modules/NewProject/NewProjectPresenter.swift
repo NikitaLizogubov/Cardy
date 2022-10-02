@@ -110,6 +110,8 @@ extension NewProjectPresenterImpl: NewProjectPresenterOutput {
     }
     
     func didPreview() {
+        view?.startLoading()
+        
         renderEngine.makePreviewAsset(project) { [self] in
             guard let asset = $0 else { return }
             
@@ -117,6 +119,8 @@ extension NewProjectPresenterImpl: NewProjectPresenterOutput {
             let player = AVPlayer(playerItem: playerItem)
             
             coordinator.navigateToAssetPreview(with: player)
+            
+            view?.stopLoading()
         }
     }
     

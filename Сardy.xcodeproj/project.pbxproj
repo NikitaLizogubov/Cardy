@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		14C6DEA128EA2AEF00D7F32B /* RenderLayeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6DEA028EA2AEF00D7F32B /* RenderLayeFactory.swift */; };
 		14C6DEA728EA2CD800D7F32B /* CALayer+addSublayes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6DEA628EA2CD800D7F32B /* CALayer+addSublayes.swift */; };
+		14C6DEAC28EA310D00D7F32B /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6DEAB28EA310D00D7F32B /* XibView.swift */; };
+		14C6DEB028EA313A00D7F32B /* UIView+addFullSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6DEAF28EA313A00D7F32B /* UIView+addFullSubview.swift */; };
+		14C6DEB328EA316500D7F32B /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6DEB228EA316500D7F32B /* ActivityView.swift */; };
+		14C6DEB528EA316F00D7F32B /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14C6DEB428EA316F00D7F32B /* ActivityView.xib */; };
+		14C6DEB728EA31B900D7F32B /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6DEB628EA31B900D7F32B /* ActivityViewModel.swift */; };
 		8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */; };
 		8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */; };
 		8D2CE62728E8578C00C74E4F /* Crady.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE62528E8578C00C74E4F /* Crady.xcdatamodeld */; };
@@ -66,6 +71,11 @@
 /* Begin PBXFileReference section */
 		14C6DEA028EA2AEF00D7F32B /* RenderLayeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderLayeFactory.swift; sourceTree = "<group>"; };
 		14C6DEA628EA2CD800D7F32B /* CALayer+addSublayes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addSublayes.swift"; sourceTree = "<group>"; };
+		14C6DEAB28EA310D00D7F32B /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
+		14C6DEAF28EA313A00D7F32B /* UIView+addFullSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addFullSubview.swift"; sourceTree = "<group>"; };
+		14C6DEB228EA316500D7F32B /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		14C6DEB428EA316F00D7F32B /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
+		14C6DEB628EA31B900D7F32B /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		8D2CE61928E8578C00C74E4F /* Сardy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Сardy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +153,7 @@
 		14C6DEA328EA2CB900D7F32B /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				14C6DEAE28EA312F00D7F32B /* UIView */,
 				14C6DEA528EA2CC600D7F32B /* CALayer */,
 			);
 			path = UIKit;
@@ -154,6 +165,41 @@
 				14C6DEA628EA2CD800D7F32B /* CALayer+addSublayes.swift */,
 			);
 			path = CALayer;
+			sourceTree = "<group>";
+		};
+		14C6DEA828EA30E100D7F32B /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				14C6DEB128EA314700D7F32B /* ActivityView */,
+				14C6DEA928EA30F200D7F32B /* XibView */,
+			);
+			path = UIViews;
+			sourceTree = "<group>";
+		};
+		14C6DEA928EA30F200D7F32B /* XibView */ = {
+			isa = PBXGroup;
+			children = (
+				14C6DEAB28EA310D00D7F32B /* XibView.swift */,
+			);
+			path = XibView;
+			sourceTree = "<group>";
+		};
+		14C6DEAE28EA312F00D7F32B /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				14C6DEAF28EA313A00D7F32B /* UIView+addFullSubview.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		14C6DEB128EA314700D7F32B /* ActivityView */ = {
+			isa = PBXGroup;
+			children = (
+				14C6DEB628EA31B900D7F32B /* ActivityViewModel.swift */,
+				14C6DEB228EA316500D7F32B /* ActivityView.swift */,
+				14C6DEB428EA316F00D7F32B /* ActivityView.xib */,
+			);
+			path = ActivityView;
 			sourceTree = "<group>";
 		};
 		8D2CE61028E8578C00C74E4F = {
@@ -289,6 +335,7 @@
 		8D2CE66728E8671E00C74E4F /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				14C6DEA828EA30E100D7F32B /* UIViews */,
 				8D2CE66828E8672400C74E4F /* Collections */,
 			);
 			path = UIKit;
@@ -510,6 +557,7 @@
 				8D2CE67E28E8740400C74E4F /* ProjectAssetTableViewCell.xib in Resources */,
 				8D2CE6B128E9B11400C74E4F /* background3.mp4 in Resources */,
 				8D2CE6AF28E9B11400C74E4F /* background2.mp4 in Resources */,
+				14C6DEB528EA316F00D7F32B /* ActivityView.xib in Resources */,
 				8D2CE62C28E8578D00C74E4F /* LaunchScreen.storyboard in Resources */,
 				8D2CE62928E8578D00C74E4F /* Assets.xcassets in Resources */,
 				8D2CE66428E8666100C74E4F /* TemplateCollectionViewCell.xib in Resources */,
@@ -550,10 +598,12 @@
 				8D2CE6A128E9ADF600C74E4F /* Template.swift in Sources */,
 				8D2CE67328E86F2000C74E4F /* NewProjectViewController.swift in Sources */,
 				8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */,
+				14C6DEB728EA31B900D7F32B /* ActivityViewModel.swift in Sources */,
 				8D2CE65B28E8606300C74E4F /* RootViewController.swift in Sources */,
 				8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */,
 				8D2CE66328E8666100C74E4F /* TemplateCollectionViewCell.swift in Sources */,
 				8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */,
+				14C6DEB028EA313A00D7F32B /* UIView+addFullSubview.swift in Sources */,
 				8D2CE68028E8741900C74E4F /* ProjectAssetTableViewCellViewModel.swift in Sources */,
 				8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */,
 				8D2CE65E28E861EC00C74E4F /* RootPresenter.swift in Sources */,
@@ -562,7 +612,9 @@
 				8D2CE66628E866D800C74E4F /* TemplateCollectionViewCellViewModel.swift in Sources */,
 				8D2CE66D28E8693000C74E4F /* CollectionCell.swift in Sources */,
 				8D2CE66B28E8674800C74E4F /* CollectionCellViewModel.swift in Sources */,
+				14C6DEAC28EA310D00D7F32B /* XibView.swift in Sources */,
 				8D2CE68728E87AE500C74E4F /* AssetPickerPresenter.swift in Sources */,
+				14C6DEB328EA316500D7F32B /* ActivityView.swift in Sources */,
 				14C6DEA728EA2CD800D7F32B /* CALayer+addSublayes.swift in Sources */,
 				8D2CE68328E878E400C74E4F /* AssetPicker.swift in Sources */,
 			);
