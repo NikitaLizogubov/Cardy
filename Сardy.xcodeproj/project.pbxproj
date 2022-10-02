@@ -157,7 +157,6 @@
 				8D2CE65228E85D6600C74E4F /* Common */,
 				8D2CE69028E8EA2900C74E4F /* Services */,
 				8D2CE65328E85D6B00C74E4F /* Modules */,
-				8D2CE68B28E8832B00C74E4F /* Extensions */,
 				8D2CE65828E8601C00C74E4F /* Resources */,
 				8D2CE6B428E9D8ED00C74E4F /* Utility */,
 				8D2CE62A28E8578D00C74E4F /* LaunchScreen.storyboard */,
@@ -332,21 +331,6 @@
 				8D2CE68928E8806700C74E4F /* Project.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		8D2CE68B28E8832B00C74E4F /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				8D2CE68C28E8833300C74E4F /* Foundation */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		8D2CE68C28E8833300C74E4F /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Foundation;
 			sourceTree = "<group>";
 		};
 		8D2CE69028E8EA2900C74E4F /* Services */ = {

@@ -17,12 +17,17 @@ final class RenderEngineImpl {
     
     // MARK: - Private methods
     
-    private func makeVideoComposition(for videoTrack: AVMutableCompositionTrack) -> AVVideoComposition {
+    private func makeVideoComposition(_ project: Project, for videoTrack: AVMutableCompositionTrack) -> AVVideoComposition {
         let videoLayer = makeVideLayer(for: videoTrack)
-        let animationLayer = makeAnimationLayer(for: videoTrack, sublayers: [
-            videoLayer,
-            makeImageLayer(.add)
-        ])
+        let animationLayer = makeAnimationLayer(for: videoTrack)
+        
+        animationLayer.addSublayer(videoLayer)
+        
+        project.images.compactMap({ $0 }).forEach({
+            let imageLayer = makeImageLayer($0)
+            
+            animationLayer.addSublayer(imageLayer)
+        })
         
         // TODO: - Remove !
         let videoComposition = AVMutableVideoComposition(propertiesOf: videoTrack.asset!)
@@ -40,15 +45,11 @@ final class RenderEngineImpl {
         return videoLayer
     }
     
-    private func makeAnimationLayer(for videoTrack: AVMutableCompositionTrack, sublayers: [CALayer]) -> CALayer {
+    private func makeAnimationLayer(for videoTrack: AVMutableCompositionTrack) -> CALayer {
         let frame = CGRect(origin: .zero, size: videoTrack.naturalSize)
         
         let animationLayer = CALayer()
         animationLayer.frame = frame
-        
-        sublayers.forEach({
-            animationLayer.addSublayer($0)
-        })
         
         return animationLayer
     }
@@ -57,7 +58,7 @@ final class RenderEngineImpl {
     private func makeImageLayer(_ asset: UIImage) -> CALayer {
         let imageLayer = CALayer()
         imageLayer.contents = asset.cgImage
-        imageLayer.frame = CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0)
+        imageLayer.frame = CGRect(x: 0.0, y: 0.0, width: 400.0, height: 400.0)
         return imageLayer
     }
     
@@ -96,26 +97,6 @@ extension RenderEngineImpl: RenderEngine {
     }
     
     func makePreviewAsset(_ project: Project, completion: @escaping (AVAsset?) -> Void) {
-//        let outputURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("output-\(Int(Date().timeIntervalSince1970)).mp4")
-//
-//        let processor = VideoOverlayProcessor(inputURL: project.template.backgroundURL!, outputURL: outputURL)
-//
-//        let videoSize = processor.videoSize
-//        let videoDuration = processor.videoDuration
-//
-//        let textOverlay = ImageOverlay(image: .add, frame: CGRect(x: .zero, y: .zero, width: 200.0, height: 200.0), delay: .zero, duration: videoDuration)
-//        processor.addOverlay(textOverlay)
-//
-//        processor.process { [weak self] (exportSession) in
-//            guard let exportSession = exportSession else { return }
-//
-//            if (exportSession.status == .completed) {
-//                DispatchQueue.main.async {
-//                    completion(AVAsset(url: exportSession.outputURL!))
-//                }
-//            }
-//        }
-        
         let composition = AVMutableComposition()
 
         guard let videoTrack = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid) else {
@@ -131,15 +112,7 @@ extension RenderEngineImpl: RenderEngine {
 
         removeFileIfExists(documentDirectoryURL)
 
-        let videoComposition = makeVideoComposition(for: videoTrack)
-
-//        let instruction = AVMutableVideoCompositionInstruction()
-//        instruction.timeRange = CMTimeRangeMake(start: CMTime.zero, duration: composition.duration)
-//        _ = composition.tracks(withMediaType: AVMediaType.video)[0] as AVAssetTrack
-//
-//        let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
-//        instruction.layerInstructions = [layerInstruction]
-//        videoComposition.instructions = [instruction]
+        let videoComposition = makeVideoComposition(project, for: videoTrack)
 
         export(composition: composition, videoComposition: videoComposition, outputURL: documentDirectoryURL) {
             let asset = AVAsset(url: $0)
