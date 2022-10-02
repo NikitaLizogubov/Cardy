@@ -15,51 +15,34 @@ protocol RenderEngine {
 
 final class RenderEngineImpl {
     
+    // MARK: - Private properties
+    
+    private let renderLayerFactory: RenderLayeFactory
+    
+    // MARK: - Init
+    
+    init(renderLayerFactory: RenderLayeFactory = RenderLayeFactoryImpl()) {
+        self.renderLayerFactory = renderLayerFactory
+    }
+    
     // MARK: - Private methods
     
     private func makeVideoComposition(_ project: Project, for videoTrack: AVMutableCompositionTrack) -> AVVideoComposition {
-        let videoLayer = makeVideLayer(for: videoTrack)
-        let animationLayer = makeAnimationLayer(for: videoTrack)
+        let images = project.images.compactMap({ $0 })
+        let positions = project.template.imageFragments.map({ $0.position })
+        
+        let videoLayer = renderLayerFactory.makeVideLayer(for: videoTrack)
+        let animationLayer = renderLayerFactory.makeAnimationLayer(for: videoTrack)
+        let imageLayers = renderLayerFactory.makeImageLayers(images, positions: positions, for: videoTrack)
         
         animationLayer.addSublayer(videoLayer)
-        
-        project.images.compactMap({ $0 }).forEach({
-            let imageLayer = makeImageLayer($0)
-            
-            animationLayer.addSublayer(imageLayer)
-        })
+        animationLayer.addSublayers(imageLayers)
         
         // TODO: - Remove !
         let videoComposition = AVMutableVideoComposition(propertiesOf: videoTrack.asset!)
         videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: animationLayer)
         
         return videoComposition
-    }
-    
-    private func makeVideLayer(for videoTrack: AVMutableCompositionTrack) -> CALayer {
-        let frame = CGRect(origin: .zero, size: videoTrack.naturalSize)
-        
-        let videoLayer = CALayer()
-        videoLayer.frame = frame
-        
-        return videoLayer
-    }
-    
-    private func makeAnimationLayer(for videoTrack: AVMutableCompositionTrack) -> CALayer {
-        let frame = CGRect(origin: .zero, size: videoTrack.naturalSize)
-        
-        let animationLayer = CALayer()
-        animationLayer.frame = frame
-        
-        return animationLayer
-    }
-    
-    // TODO: - Add multiple images
-    private func makeImageLayer(_ asset: UIImage) -> CALayer {
-        let imageLayer = CALayer()
-        imageLayer.contents = asset.cgImage
-        imageLayer.frame = CGRect(x: 0.0, y: 0.0, width: 400.0, height: 400.0)
-        return imageLayer
     }
     
     private func addVideoAssets(_ assets: [AVAsset], for videoTrack: AVMutableCompositionTrack) {

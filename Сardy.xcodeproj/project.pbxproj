@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14C6DEA128EA2AEF00D7F32B /* RenderLayeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6DEA028EA2AEF00D7F32B /* RenderLayeFactory.swift */; };
+		14C6DEA728EA2CD800D7F32B /* CALayer+addSublayes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6DEA628EA2CD800D7F32B /* CALayer+addSublayes.swift */; };
 		8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */; };
 		8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */; };
 		8D2CE62728E8578C00C74E4F /* Crady.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE62528E8578C00C74E4F /* Crady.xcdatamodeld */; };
@@ -41,7 +43,6 @@
 		8D2CE6AF28E9B11400C74E4F /* background2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AC28E9B11400C74E4F /* background2.mp4 */; };
 		8D2CE6B028E9B11400C74E4F /* background1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AD28E9B11400C74E4F /* background1.mp4 */; };
 		8D2CE6B128E9B11400C74E4F /* background3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AE28E9B11400C74E4F /* background3.mp4 */; };
-		8D2CE6B328E9D2C700C74E4F /* VideoOverlayProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6B228E9D2C700C74E4F /* VideoOverlayProcessor.swift */; };
 		8D2CE6B628E9D90B00C74E4F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6B528E9D90B00C74E4F /* Environment.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14C6DEA028EA2AEF00D7F32B /* RenderLayeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderLayeFactory.swift; sourceTree = "<group>"; };
+		14C6DEA628EA2CD800D7F32B /* CALayer+addSublayes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addSublayes.swift"; sourceTree = "<group>"; };
 		8D2CE61928E8578C00C74E4F /* Сardy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Сardy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2CE61C28E8578C00C74E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D2CE61E28E8578C00C74E4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +104,6 @@
 		8D2CE6AC28E9B11400C74E4F /* background2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background2.mp4; sourceTree = "<group>"; };
 		8D2CE6AD28E9B11400C74E4F /* background1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background1.mp4; sourceTree = "<group>"; };
 		8D2CE6AE28E9B11400C74E4F /* background3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background3.mp4; sourceTree = "<group>"; };
-		8D2CE6B228E9D2C700C74E4F /* VideoOverlayProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoOverlayProcessor.swift; sourceTree = "<group>"; };
 		8D2CE6B528E9D90B00C74E4F /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14C6DEA228EA2CAE00D7F32B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				14C6DEA328EA2CB900D7F32B /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		14C6DEA328EA2CB900D7F32B /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				14C6DEA528EA2CC600D7F32B /* CALayer */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		14C6DEA528EA2CC600D7F32B /* CALayer */ = {
+			isa = PBXGroup;
+			children = (
+				14C6DEA628EA2CD800D7F32B /* CALayer+addSublayes.swift */,
+			);
+			path = CALayer;
+			sourceTree = "<group>";
+		};
 		8D2CE61028E8578C00C74E4F = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +183,7 @@
 				8D2CE65228E85D6600C74E4F /* Common */,
 				8D2CE69028E8EA2900C74E4F /* Services */,
 				8D2CE65328E85D6B00C74E4F /* Modules */,
+				14C6DEA228EA2CAE00D7F32B /* Extensions */,
 				8D2CE65828E8601C00C74E4F /* Resources */,
 				8D2CE6B428E9D8ED00C74E4F /* Utility */,
 				8D2CE62A28E8578D00C74E4F /* LaunchScreen.storyboard */,
@@ -345,7 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				8D2CE69228E8EAC800C74E4F /* RenderEngine.swift */,
-				8D2CE6B228E9D2C700C74E4F /* VideoOverlayProcessor.swift */,
+				14C6DEA028EA2AEF00D7F32B /* RenderLayeFactory.swift */,
 			);
 			path = Render;
 			sourceTree = "<group>";
@@ -514,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D2CE62728E8578C00C74E4F /* Crady.xcdatamodeld in Sources */,
+				14C6DEA128EA2AEF00D7F32B /* RenderLayeFactory.swift in Sources */,
 				8D2CE6B628E9D90B00C74E4F /* Environment.swift in Sources */,
 				8D2CE67D28E8740400C74E4F /* ProjectAssetTableViewCell.swift in Sources */,
 				8D2CE67828E86F3500C74E4F /* NewProjectPresenter.swift in Sources */,
@@ -524,7 +552,6 @@
 				8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */,
 				8D2CE65B28E8606300C74E4F /* RootViewController.swift in Sources */,
 				8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */,
-				8D2CE6B328E9D2C700C74E4F /* VideoOverlayProcessor.swift in Sources */,
 				8D2CE66328E8666100C74E4F /* TemplateCollectionViewCell.swift in Sources */,
 				8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */,
 				8D2CE68028E8741900C74E4F /* ProjectAssetTableViewCellViewModel.swift in Sources */,
@@ -536,6 +563,7 @@
 				8D2CE66D28E8693000C74E4F /* CollectionCell.swift in Sources */,
 				8D2CE66B28E8674800C74E4F /* CollectionCellViewModel.swift in Sources */,
 				8D2CE68728E87AE500C74E4F /* AssetPickerPresenter.swift in Sources */,
+				14C6DEA728EA2CD800D7F32B /* CALayer+addSublayes.swift in Sources */,
 				8D2CE68328E878E400C74E4F /* AssetPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
