@@ -26,6 +26,10 @@ class Coordinator {
     
     // MARK: - Public methods
     
+    func generateModule() -> UIViewController {
+        fatalError("this \(#function) method must be overridden")
+    }
+    
     func start() {
         fatalError("this \(#function) method must be overridden")
     }

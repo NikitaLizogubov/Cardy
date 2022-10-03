@@ -25,7 +25,7 @@ final class RootPresenterImpl {
     private weak var view: RootView?
     
     // Locale
-    private let templates: [Template]
+    private let project: [Project]
     
     // MARK: - Init
     
@@ -33,7 +33,7 @@ final class RootPresenterImpl {
         self.coordinator = coordinator
         self.view = view
         
-        self.templates = Template.mock
+        self.project = Project.mock
     }
     
 }
@@ -47,12 +47,12 @@ extension RootPresenterImpl: RootPresenter {
     }
     
     var numberOfItemsInSection: Int {
-        templates.count
+        project.count
     }
     
     func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel {
-        TemplateCollectionViewCellViewModel(template: templates[indexPath.row]) { [unowned self] in
-            coordinator.navigateToCreateNewProject(using: templates[indexPath.row])
+        TemplateCollectionViewCellViewModel(project: project[indexPath.row]) { [unowned self] in
+            coordinator.navigateToCreateNewProject(using: project[indexPath.row])
         }
     }
     

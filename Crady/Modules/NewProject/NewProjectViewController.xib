@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewProjectViewController" customModule="Сardy" customModuleProvider="target">
             <connections>
-                <outlet property="activityView" destination="CMW-Dw-WUB" id="f48-jX-ItX"/>
                 <outlet property="assetsTableView" destination="epB-IT-sNE" id="2uJ-kc-IGl"/>
                 <outlet property="previewImageView" destination="pag-LC-NsO" id="fLU-Le-8a6"/>
                 <outlet property="previewView" destination="hW2-RP-vRQ" id="3hl-Np-xuQ"/>
@@ -26,8 +25,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hW2-RP-vRQ">
                     <rect key="frame" x="0.0" y="48" width="414" height="530"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scribble.variable" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pag-LC-NsO">
-                            <rect key="frame" x="0.0" y="-0.5" width="414" height="529.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pag-LC-NsO">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="530"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -42,52 +41,28 @@
                     <rect key="frame" x="0.0" y="578" width="414" height="318"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDb-sT-qbL">
-                    <rect key="frame" x="318" y="818" width="80" height="44"/>
-                    <color key="backgroundColor" systemColor="systemYellowColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="3yX-uC-ojv"/>
-                        <constraint firstAttribute="height" constant="44" id="7v7-hJ-98d"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Next"/>
-                </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMW-Dw-WUB" customClass="ActivityView" customModule="Сardy" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="48" width="414" height="848"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SDb-sT-qbL" secondAttribute="trailing" constant="16" id="2Cq-mC-60e"/>
-                <constraint firstItem="CMW-Dw-WUB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6MY-hV-w3d"/>
                 <constraint firstItem="epB-IT-sNE" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="PCW-qe-5MW"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CMW-Dw-WUB" secondAttribute="trailing" id="UdE-qz-Huz"/>
                 <constraint firstItem="epB-IT-sNE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wlc-u6-Kvs"/>
                 <constraint firstItem="hW2-RP-vRQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fcB-aq-VPf"/>
                 <constraint firstAttribute="bottom" secondItem="epB-IT-sNE" secondAttribute="bottom" id="hst-UA-TG7"/>
                 <constraint firstItem="epB-IT-sNE" firstAttribute="height" secondItem="hW2-RP-vRQ" secondAttribute="height" multiplier="0.6" id="itw-Jv-6Yg"/>
-                <constraint firstAttribute="bottom" secondItem="CMW-Dw-WUB" secondAttribute="bottom" id="lQQ-18-GYZ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SDb-sT-qbL" secondAttribute="bottom" id="mgf-gN-lPd"/>
                 <constraint firstItem="hW2-RP-vRQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qz7-ob-uej"/>
                 <constraint firstItem="hW2-RP-vRQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="uEc-YS-8GF"/>
                 <constraint firstItem="epB-IT-sNE" firstAttribute="top" secondItem="hW2-RP-vRQ" secondAttribute="bottom" id="uUG-9c-4Mt"/>
-                <constraint firstItem="CMW-Dw-WUB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="us2-0k-Rw1"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="130.58035714285714"/>
         </view>
     </objects>
     <resources>
-        <image name="scribble.variable" catalog="system" width="128" height="119"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

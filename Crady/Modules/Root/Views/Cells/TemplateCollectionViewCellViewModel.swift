@@ -18,13 +18,13 @@ final class TemplateCollectionViewCellViewModel: CollectionCellViewModel {
     
     // MARK: - Private properties
     
-    private let template: Template
+    private let project: Project
     private let selectionHandler: () -> Void
     
     // MARK: - Init
     
-    init(template: Template, selectionHandler: @escaping () -> Void) {
-        self.template = template
+    init(project: Project, selectionHandler: @escaping () -> Void) {
+        self.project = project
         self.selectionHandler = selectionHandler
     }
     
@@ -41,7 +41,7 @@ final class TemplateCollectionViewCellViewModel: CollectionCellViewModel {
 extension TemplateCollectionViewCellViewModel: TemplateCollectionViewCellViewModelInput {
     
     var title: String {
-        template.name
+        project.name
     }
     
     var backgroundColor: UIColor {

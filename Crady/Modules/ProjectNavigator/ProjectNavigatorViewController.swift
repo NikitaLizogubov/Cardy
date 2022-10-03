@@ -27,6 +27,20 @@ final class ProjectNavigatorViewController: UIPageViewController {
         super.viewDidLoad()
 
         dataSource = self
+        
+        initilizeComponents()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     // MARK: - Public methods
@@ -37,6 +51,28 @@ final class ProjectNavigatorViewController: UIPageViewController {
         if let firstViewController = viewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
+    }
+    
+    // MARK: - Private methods
+    
+    private func initilizeComponents() {
+        guard let presenter = presenter else { return }
+        
+        navigationItem.title = presenter.navigationTitle
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: presenter.previewButtonTitle,
+            style: .plain,
+            target: self,
+            action: #selector(didPreview)
+        )
+
+        view.backgroundColor = presenter.backgroundColor
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func didPreview(_ sender: Any) {
+        presenter?.didPreview()
     }
 
 }

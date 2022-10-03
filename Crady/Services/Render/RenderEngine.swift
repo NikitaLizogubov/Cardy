@@ -30,18 +30,18 @@ final class RenderEngineImpl {
     // MARK: - Private methods
     
     private func makeVideoComposition(_ project: Project, for videoTrack: AVMutableCompositionTrack) -> AVVideoComposition {
-        let images = project.images.compactMap({ $0 })
-        let positions = project.template.imageFragments.map({ $0.position })
+        //let images = project.images.compactMap({ $0 })
+        //let positions = project.template.imageFragments.map({ $0.position })
         
         let videoLayer = renderLayerFactory.makeVideLayer(for: videoTrack)
         let animationLayer = renderLayerFactory.makeAnimationLayer(for: videoTrack)
-        let imageLayers = renderLayerFactory.makeImageLayers(images, positions: positions, for: videoTrack)
+        //let imageLayers = renderLayerFactory.makeImageLayers(images, positions: positions, for: videoTrack)
         
         if !Environment.isSimulator {
             animationLayer.addSublayer(videoLayer)
         }
         
-        animationLayer.addSublayers(imageLayers)
+        //animationLayer.addSublayers(imageLayers)
         
         // TODO: - Remove !
         let videoComposition = AVMutableVideoComposition(propertiesOf: videoTrack.asset!)
@@ -92,7 +92,7 @@ extension RenderEngineImpl: RenderEngine {
             return
         }
 
-        addVideoAssets([project.template.asset!], for: videoTrack)
+        addVideoAssets([], for: videoTrack)
         
         let documentDirectoryURL = fileManager.makeTampDirectory("result.mov")
 

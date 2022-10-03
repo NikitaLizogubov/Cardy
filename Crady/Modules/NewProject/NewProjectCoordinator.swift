@@ -6,12 +6,10 @@
 //
 
 import UIKit
-import AVKit
 
 protocol NewProjectCoordinator: AnyObject {
     func back()
     func navigateToAssetPicker(completion: @escaping (UIImage?) -> Void)
-    func navigateToAssetPreview(with player: AVPlayer)
     func navigateToEditImage(_ image: UIImage)
 }
 
@@ -19,28 +17,28 @@ final class NewProjectCoordinatorImpl: Coordinator {
     
     // MARK: - Private properties
     
-    private let template: Template
+    private let project: Project
+    private let content: ImageContent
     
     // MARK: - Init
     
-    init(template: Template, parentViewController: UIViewController?) {
-        self.template = template
+    init(project: Project, content: ImageContent, parentViewController: UIViewController?) {
+        self.project = project
+        self.content = content
         
         super.init(parentViewController: parentViewController)
     }
     
     // MARK: - Public methods
     
-    func generateModule() -> UIViewController {
+    override func generateModule() -> UIViewController {
         let viewController = NewProjectViewController()
-        let canvasEngine = CanvasEngineImpl()
-        let renderEngine = RenderEngineImpl()
+        let canvasEngine = CanvasEngineImpl(internalSize: project.size)
         let presenter = NewProjectPresenterImpl(
             coordinator: self,
             view: viewController,
-            template: template,
-            canvasEngine: canvasEngine,
-            renderEngine: renderEngine
+            content: content,
+            canvasEngine: canvasEngine
         )
         viewController.presenter = presenter
         
@@ -62,15 +60,6 @@ extension NewProjectCoordinatorImpl: NewProjectCoordinator {
     func navigateToAssetPicker(completion: @escaping (UIImage?) -> Void) {
         let coordinator = AssetPickerCoordinatorImpl(sourceType: .photoLibrary, completion: completion, parentViewController: viewController)
         coordinator.start()
-    }
-    
-    func navigateToAssetPreview(with player: AVPlayer) {
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = player
-        
-        viewController?.present(playerViewController, animated: true) {
-            playerViewController.player!.play()
-        }
     }
     
     func navigateToEditImage(_ image: UIImage) {

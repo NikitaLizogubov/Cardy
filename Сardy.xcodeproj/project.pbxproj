@@ -43,9 +43,8 @@
 		8D2CE68328E878E400C74E4F /* AssetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68228E878E400C74E4F /* AssetPicker.swift */; };
 		8D2CE68528E879B100C74E4F /* AssetPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68428E879B100C74E4F /* AssetPickerCoordinator.swift */; };
 		8D2CE68728E87AE500C74E4F /* AssetPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68628E87AE500C74E4F /* AssetPickerPresenter.swift */; };
-		8D2CE68A28E8806700C74E4F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE68928E8806700C74E4F /* Project.swift */; };
 		8D2CE69328E8EAC800C74E4F /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE69228E8EAC800C74E4F /* RenderEngine.swift */; };
-		8D2CE6A128E9ADF600C74E4F /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6A028E9ADF600C74E4F /* Template.swift */; };
+		8D2CE6A128E9ADF600C74E4F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6A028E9ADF600C74E4F /* Project.swift */; };
 		8D2CE6AF28E9B11400C74E4F /* background2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AC28E9B11400C74E4F /* background2.mp4 */; };
 		8D2CE6B028E9B11400C74E4F /* background1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AD28E9B11400C74E4F /* background1.mp4 */; };
 		8D2CE6B128E9B11400C74E4F /* background3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AE28E9B11400C74E4F /* background3.mp4 */; };
@@ -55,6 +54,7 @@
 		8DFFD88328EB540700B3ED04 /* ProjectNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD88128EB540700B3ED04 /* ProjectNavigatorViewController.swift */; };
 		8DFFD88428EB540700B3ED04 /* ProjectNavigatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DFFD88228EB540700B3ED04 /* ProjectNavigatorViewController.xib */; };
 		8DFFD88628EB551A00B3ED04 /* ProjectNavigatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD88528EB551A00B3ED04 /* ProjectNavigatorPresenter.swift */; };
+		8DFFD88928EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD88828EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,9 +115,8 @@
 		8D2CE68228E878E400C74E4F /* AssetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPicker.swift; sourceTree = "<group>"; };
 		8D2CE68428E879B100C74E4F /* AssetPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPickerCoordinator.swift; sourceTree = "<group>"; };
 		8D2CE68628E87AE500C74E4F /* AssetPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPickerPresenter.swift; sourceTree = "<group>"; };
-		8D2CE68928E8806700C74E4F /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		8D2CE69228E8EAC800C74E4F /* RenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderEngine.swift; sourceTree = "<group>"; };
-		8D2CE6A028E9ADF600C74E4F /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		8D2CE6A028E9ADF600C74E4F /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		8D2CE6AC28E9B11400C74E4F /* background2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background2.mp4; sourceTree = "<group>"; };
 		8D2CE6AD28E9B11400C74E4F /* background1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background1.mp4; sourceTree = "<group>"; };
 		8D2CE6AE28E9B11400C74E4F /* background3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background3.mp4; sourceTree = "<group>"; };
@@ -127,6 +126,7 @@
 		8DFFD88128EB540700B3ED04 /* ProjectNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNavigatorViewController.swift; sourceTree = "<group>"; };
 		8DFFD88228EB540700B3ED04 /* ProjectNavigatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectNavigatorViewController.xib; sourceTree = "<group>"; };
 		8DFFD88528EB551A00B3ED04 /* ProjectNavigatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNavigatorPresenter.swift; sourceTree = "<group>"; };
+		8DFFD88828EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFragmentEditorFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,7 +383,6 @@
 		8D2CE67028E86F0800C74E4F /* NewProject */ = {
 			isa = PBXGroup;
 			children = (
-				8D2CE68828E8806000C74E4F /* Models */,
 				8D2CE67928E873E400C74E4F /* Views */,
 				8D2CE67528E86F2C00C74E4F /* NewProjectCoordinator.swift */,
 				8D2CE67728E86F3500C74E4F /* NewProjectPresenter.swift */,
@@ -421,14 +420,6 @@
 			path = AssetPicker;
 			sourceTree = "<group>";
 		};
-		8D2CE68828E8806000C74E4F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8D2CE68928E8806700C74E4F /* Project.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		8D2CE69028E8EA2900C74E4F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,7 +452,7 @@
 		8D2CE6A828E9AE8300C74E4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8D2CE6A028E9ADF600C74E4F /* Template.swift */,
+				8D2CE6A028E9ADF600C74E4F /* Project.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -492,12 +483,21 @@
 		8DFFD87E28EB533A00B3ED04 /* ProjectNavigator */ = {
 			isa = PBXGroup;
 			children = (
+				8DFFD88728EB5F9300B3ED04 /* Factories */,
 				8DFFD87F28EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift */,
 				8DFFD88528EB551A00B3ED04 /* ProjectNavigatorPresenter.swift */,
 				8DFFD88128EB540700B3ED04 /* ProjectNavigatorViewController.swift */,
 				8DFFD88228EB540700B3ED04 /* ProjectNavigatorViewController.xib */,
 			);
 			path = ProjectNavigator;
+			sourceTree = "<group>";
+		};
+		8DFFD88728EB5F9300B3ED04 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				8DFFD88828EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -645,9 +645,8 @@
 				8D2CE67D28E8740400C74E4F /* ProjectAssetTableViewCell.swift in Sources */,
 				8DFFD87B28EB3D5E00B3ED04 /* CanvasEngine.swift in Sources */,
 				8D2CE67828E86F3500C74E4F /* NewProjectPresenter.swift in Sources */,
-				8D2CE68A28E8806700C74E4F /* Project.swift in Sources */,
 				8D2CE69328E8EAC800C74E4F /* RenderEngine.swift in Sources */,
-				8D2CE6A128E9ADF600C74E4F /* Template.swift in Sources */,
+				8D2CE6A128E9ADF600C74E4F /* Project.swift in Sources */,
 				8D2CE67328E86F2000C74E4F /* NewProjectViewController.swift in Sources */,
 				8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */,
 				14C6DEB728EA31B900D7F32B /* ActivityViewModel.swift in Sources */,
@@ -655,6 +654,7 @@
 				8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */,
 				8D2CE66328E8666100C74E4F /* TemplateCollectionViewCell.swift in Sources */,
 				8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */,
+				8DFFD88928EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift in Sources */,
 				14C6DEBA28EA35F000D7F32B /* FileManager.swift in Sources */,
 				14C6DEB028EA313A00D7F32B /* UIView+addFullSubview.swift in Sources */,
 				8D2CE68028E8741900C74E4F /* ProjectAssetTableViewCellViewModel.swift in Sources */,

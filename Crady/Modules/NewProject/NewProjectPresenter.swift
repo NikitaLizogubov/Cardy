@@ -9,8 +9,6 @@ import UIKit
 import AVFoundation
 
 protocol NewProjectPresenterInput {
-    var navigationTitle: String { get }
-    var previewButtonTitle: String { get }
     var numberOfItemsInSection: Int { get }
     var backgroundColor: UIColor { get }
 }
@@ -18,7 +16,6 @@ protocol NewProjectPresenterInput {
 protocol NewProjectPresenterOutput {
     func viewDidLoad()
     func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel
-    func didPreview()
 }
 
 typealias NewProjectPresenter = NewProjectPresenterInput & NewProjectPresenterOutput
@@ -32,32 +29,27 @@ final class NewProjectPresenterImpl {
     private weak var view: NewProjectView?
     
     private let canvasEngine: CanvasEngine
-    private let renderEngine: RenderEngine
     
-    // Locale
-    private var project: Project
+    private let content: ImageContent
     
     // MARK: - Init
     
     init(
         coordinator: NewProjectCoordinator,
         view: NewProjectView,
-        template: Template,
-        canvasEngine: CanvasEngine,
-        renderEngine: RenderEngine
+        content: ImageContent,
+        canvasEngine: CanvasEngine
     ) {
         self.coordinator = coordinator
         self.view = view
         self.canvasEngine = canvasEngine
-        self.renderEngine = renderEngine
-        
-        self.project = Project(template: template)
+        self.content = content
     }
     
     // MARK: - Private methods
     
     private func updatePreview() {
-        canvasEngine.makeCanvas(project: project) { [unowned self] in
+        canvasEngine.makeCanvas(content: content) { [unowned self] in
             self.view?.update(previewImage: $0)
         }
     }
@@ -68,16 +60,8 @@ final class NewProjectPresenterImpl {
 
 extension NewProjectPresenterImpl: NewProjectPresenterInput {
     
-    var navigationTitle: String {
-        project.template.name
-    }
-    
-    var previewButtonTitle: String {
-        "!-!Preview"
-    }
-    
     var numberOfItemsInSection: Int {
-        project.template.imageFragments.count
+        content.fragments.count
     }
     
     var backgroundColor: UIColor {
@@ -95,36 +79,21 @@ extension NewProjectPresenterImpl: NewProjectPresenterOutput {
     }
     
     func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel {
-        ProjectAssetTableViewCellViewModel(asset: project.images[indexPath.row], uploadHandler: { [unowned self] in
+        ProjectAssetTableViewCellViewModel(asset: content.image(for: indexPath.row), uploadHandler: { [unowned self] in
             coordinator.navigateToAssetPicker { (image) in
                 guard let image = image else { return }
-                
-                self.project.addImage(image, for: indexPath.row)
-                
+
+                self.content.addImage(image, for: indexPath.row)
+
                 self.view?.reloadRow(for: indexPath)
-                
+
                 self.updatePreview()
             }
         }, editHandler: { [unowned self] in
-            guard let image = project.images[indexPath.row] else { return }
+            guard let image = self.content.image(for: indexPath.row) else { return }
             
             self.coordinator.navigateToEditImage(image)
         })
-    }
-    
-    func didPreview() {
-        view?.startLoading()
-        
-        renderEngine.makePreviewAsset(project) { [self] in
-            guard let asset = $0 else { return }
-            
-            let playerItem = AVPlayerItem(asset: asset)
-            let player = AVPlayer(playerItem: playerItem)
-            
-            coordinator.navigateToAssetPreview(with: player)
-            
-            view?.stopLoading()
-        }
     }
     
 }

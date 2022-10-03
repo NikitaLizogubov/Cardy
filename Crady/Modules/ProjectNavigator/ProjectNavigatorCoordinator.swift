@@ -6,21 +6,22 @@
 //
 
 import UIKit
+import AVKit
 
 protocol ProjectNavigatorCoordinator: AnyObject {
-    
+    func navigateToAssetPreview(with player: AVPlayer)
 }
 
 final class ProjectNavigatorCoordinatorImpl: Coordinator {
     
     // MARK: - Private properties
     
-    private let template: Template
+    private let project: Project
     
     // MARK: - Init
     
-    init(template: Template, parentViewController: UIViewController?) {
-        self.template = template
+    init(project: Project, parentViewController: UIViewController?) {
+        self.project = project
         
         super.init(parentViewController: parentViewController)
     }
@@ -28,15 +29,16 @@ final class ProjectNavigatorCoordinatorImpl: Coordinator {
     // MARK: - Override
     
     override func start() {
+        let factory = ProjectFragmentEditorFactoryImp()
+        let renderEngine = RenderEngineImpl()
+        
         let viewController = ProjectNavigatorViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        let presenter = ProjectNavigatorPresenterImpl(coordinator: self, view: viewController)
+        let presenter = ProjectNavigatorPresenterImpl(coordinator: self, view: viewController, project: project, renderEngine: renderEngine)
         
         viewController.presenter = presenter
-        viewController.setViewControllers([
-            NewProjectCoordinatorImpl(template: template, parentViewController: parentViewController).generateModule(),
-            NewProjectCoordinatorImpl(template: template, parentViewController: parentViewController).generateModule(),
-            NewProjectCoordinatorImpl(template: template, parentViewController: parentViewController).generateModule()
-        ])
+        viewController.setViewControllers(project.content.compactMap({
+            factory.makeCoordinator(project: project, content: $0, parentViewController: parentViewController)?.generateModule()
+        }))
         
         self.viewController = viewController
         
@@ -49,5 +51,14 @@ final class ProjectNavigatorCoordinatorImpl: Coordinator {
 // MARK: - ProjectNavigatorCoordinator
 
 extension ProjectNavigatorCoordinatorImpl: ProjectNavigatorCoordinator {
+    
+    func navigateToAssetPreview(with player: AVPlayer) {
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        
+        viewController?.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
+    }
     
 }

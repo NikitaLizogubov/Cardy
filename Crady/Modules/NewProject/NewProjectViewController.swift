@@ -11,16 +11,12 @@ import AVFoundation
 protocol NewProjectView: AnyObject {
     func update(previewImage: UIImage?)
     func reloadRow(for indexPath: IndexPath)
-    
-    func startLoading()
-    func stopLoading()
 }
 
 final class NewProjectViewController: UIViewController {
     
     // MARK: - @IBOutlets
     
-    @IBOutlet private weak var activityView: ActivityView!
     @IBOutlet private weak var previewView: UIView!
     @IBOutlet private weak var previewImageView: UIImageView!
     @IBOutlet private weak var assetsTableView: UITableView! {
@@ -50,21 +46,7 @@ final class NewProjectViewController: UIViewController {
     private func initilizeComponents() {
         guard let presenter = presenter else { return }
         
-        navigationItem.title = presenter.navigationTitle
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: presenter.previewButtonTitle,
-            style: .plain,
-            target: self,
-            action: #selector(didPreview)
-        )
-
         view.backgroundColor = presenter.backgroundColor
-    }
-    
-    // MARK: - Actions
-    
-    @objc private func didPreview(_ sender: Any) {
-        presenter?.didPreview()
     }
 
 }
@@ -120,14 +102,6 @@ extension NewProjectViewController: NewProjectView {
     
     func reloadRow(for indexPath: IndexPath) {
         assetsTableView.reloadRows(at: [indexPath], with: .automatic)
-    }
-    
-    func startLoading() {
-        activityView.isHidden = false
-    }
-    
-    func stopLoading() {
-        activityView.isHidden = true
     }
     
 }
