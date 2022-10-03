@@ -47,7 +47,7 @@ final class RootCoordinatorImpl: Coordinator {
 extension RootCoordinatorImpl: RootCoordinator {
     
     func navigateToCreateNewProject(using template: Template) {
-        let coordinator = NewProjectCoordinatorImpl(template: template, parentViewController: viewController)
+        let coordinator = ProjectNavigatorCoordinatorImpl(template: template, parentViewController: viewController)
         coordinator.start()
     }
     

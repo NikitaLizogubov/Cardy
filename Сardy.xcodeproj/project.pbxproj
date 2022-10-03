@@ -51,6 +51,10 @@
 		8D2CE6B128E9B11400C74E4F /* background3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AE28E9B11400C74E4F /* background3.mp4 */; };
 		8D2CE6B628E9D90B00C74E4F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6B528E9D90B00C74E4F /* Environment.swift */; };
 		8DFFD87B28EB3D5E00B3ED04 /* CanvasEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD87A28EB3D5E00B3ED04 /* CanvasEngine.swift */; };
+		8DFFD88028EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD87F28EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift */; };
+		8DFFD88328EB540700B3ED04 /* ProjectNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD88128EB540700B3ED04 /* ProjectNavigatorViewController.swift */; };
+		8DFFD88428EB540700B3ED04 /* ProjectNavigatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DFFD88228EB540700B3ED04 /* ProjectNavigatorViewController.xib */; };
+		8DFFD88628EB551A00B3ED04 /* ProjectNavigatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD88528EB551A00B3ED04 /* ProjectNavigatorPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +123,10 @@
 		8D2CE6AE28E9B11400C74E4F /* background3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background3.mp4; sourceTree = "<group>"; };
 		8D2CE6B528E9D90B00C74E4F /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		8DFFD87A28EB3D5E00B3ED04 /* CanvasEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasEngine.swift; sourceTree = "<group>"; };
+		8DFFD87F28EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNavigatorCoordinator.swift; sourceTree = "<group>"; };
+		8DFFD88128EB540700B3ED04 /* ProjectNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNavigatorViewController.swift; sourceTree = "<group>"; };
+		8DFFD88228EB540700B3ED04 /* ProjectNavigatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectNavigatorViewController.xib; sourceTree = "<group>"; };
+		8DFFD88528EB551A00B3ED04 /* ProjectNavigatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNavigatorPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,7 +302,9 @@
 			isa = PBXGroup;
 			children = (
 				8D2CE64F28E85D2500C74E4F /* Root */,
+				8DFFD87E28EB533A00B3ED04 /* ProjectNavigator */,
 				8D2CE67028E86F0800C74E4F /* NewProject */,
+				8DFFD87D28EB4F1500B3ED04 /* EditImage */,
 				8D2CE68128E878D500C74E4F /* AssetPicker */,
 			);
 			path = Modules;
@@ -472,6 +482,24 @@
 			path = Canvas;
 			sourceTree = "<group>";
 		};
+		8DFFD87D28EB4F1500B3ED04 /* EditImage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditImage;
+			sourceTree = "<group>";
+		};
+		8DFFD87E28EB533A00B3ED04 /* ProjectNavigator */ = {
+			isa = PBXGroup;
+			children = (
+				8DFFD87F28EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift */,
+				8DFFD88528EB551A00B3ED04 /* ProjectNavigatorPresenter.swift */,
+				8DFFD88128EB540700B3ED04 /* ProjectNavigatorViewController.swift */,
+				8DFFD88228EB540700B3ED04 /* ProjectNavigatorViewController.xib */,
+			);
+			path = ProjectNavigator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -584,6 +612,7 @@
 				8D2CE62928E8578D00C74E4F /* Assets.xcassets in Resources */,
 				8D2CE66428E8666100C74E4F /* TemplateCollectionViewCell.xib in Resources */,
 				8D2CE65C28E8606300C74E4F /* RootViewController.xib in Resources */,
+				8DFFD88428EB540700B3ED04 /* ProjectNavigatorViewController.xib in Resources */,
 				8D2CE67428E86F2000C74E4F /* NewProjectViewController.xib in Resources */,
 				8D2CE6B028E9B11400C74E4F /* background1.mp4 in Resources */,
 			);
@@ -629,8 +658,10 @@
 				14C6DEBA28EA35F000D7F32B /* FileManager.swift in Sources */,
 				14C6DEB028EA313A00D7F32B /* UIView+addFullSubview.swift in Sources */,
 				8D2CE68028E8741900C74E4F /* ProjectAssetTableViewCellViewModel.swift in Sources */,
+				8DFFD88028EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift in Sources */,
 				8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */,
 				8D2CE65E28E861EC00C74E4F /* RootPresenter.swift in Sources */,
+				8DFFD88628EB551A00B3ED04 /* ProjectNavigatorPresenter.swift in Sources */,
 				8D2CE67628E86F2C00C74E4F /* NewProjectCoordinator.swift in Sources */,
 				8D2CE68528E879B100C74E4F /* AssetPickerCoordinator.swift in Sources */,
 				8D2CE66628E866D800C74E4F /* TemplateCollectionViewCellViewModel.swift in Sources */,
@@ -638,6 +669,7 @@
 				8D2CE66B28E8674800C74E4F /* CollectionCellViewModel.swift in Sources */,
 				14C6DEAC28EA310D00D7F32B /* XibView.swift in Sources */,
 				8D2CE68728E87AE500C74E4F /* AssetPickerPresenter.swift in Sources */,
+				8DFFD88328EB540700B3ED04 /* ProjectNavigatorViewController.swift in Sources */,
 				14C6DEB328EA316500D7F32B /* ActivityView.swift in Sources */,
 				14C6DEA728EA2CD800D7F32B /* CALayer+addSublayes.swift in Sources */,
 				8D2CE68328E878E400C74E4F /* AssetPicker.swift in Sources */,

@@ -29,9 +29,9 @@ final class NewProjectCoordinatorImpl: Coordinator {
         super.init(parentViewController: parentViewController)
     }
     
-    // MARK: - Override
+    // MARK: - Public methods
     
-    override func start() {
+    func generateModule() -> UIViewController {
         let viewController = NewProjectViewController()
         let canvasEngine = CanvasEngineImpl()
         let renderEngine = RenderEngineImpl()
@@ -46,7 +46,7 @@ final class NewProjectCoordinatorImpl: Coordinator {
         
         self.viewController = viewController
         
-        (parentViewController as? UINavigationController)?.pushViewController(viewController, animated: true)
+        return viewController
     }
     
 }
