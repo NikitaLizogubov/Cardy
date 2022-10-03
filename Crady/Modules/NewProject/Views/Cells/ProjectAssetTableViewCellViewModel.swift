@@ -12,7 +12,13 @@ protocol ProjectAssetTableViewCellViewModelInput {
     var assetTitle: String { get }
 }
 
-typealias ProjectAssetTableViewCellViewModelType = ProjectAssetTableViewCellViewModelInput
+protocol ProjectAssetTableViewCellViewModelOutput {
+    func didEdit()
+}
+
+typealias ProjectAssetTableViewCellViewModelType =
+    ProjectAssetTableViewCellViewModelInput &
+    ProjectAssetTableViewCellViewModelOutput
 
 final class ProjectAssetTableViewCellViewModel: CollectionCellViewModel {
     
@@ -25,19 +31,22 @@ final class ProjectAssetTableViewCellViewModel: CollectionCellViewModel {
     // MARK: - Private properties
     
     private let asset: UIImage?
-    private let selectionHandler: () -> Void
+    
+    private let uploadHandler: () -> Void
+    private let editHandler: () -> Void
     
     // MARK: - Init
     
-    init(asset: UIImage?, selectionHandler: @escaping () -> Void) {
+    init(asset: UIImage?, uploadHandler: @escaping () -> Void, editHandler: @escaping () -> Void) {
         self.asset = asset
-        self.selectionHandler = selectionHandler
+        self.uploadHandler = uploadHandler
+        self.editHandler = editHandler
     }
     
     // MARK: - Public methods
     
     func didSelect() {
-        selectionHandler()
+        uploadHandler()
     }
     
 }
@@ -52,6 +61,16 @@ extension ProjectAssetTableViewCellViewModel: ProjectAssetTableViewCellViewModel
     
     var assetTitle: String {
         "!-!Asset title"
+    }
+    
+}
+
+// MARK: - ProjectAssetTableViewCellViewModelOutput
+
+extension ProjectAssetTableViewCellViewModel: ProjectAssetTableViewCellViewModelOutput {
+    
+    func didEdit() {
+        editHandler()
     }
     
 }

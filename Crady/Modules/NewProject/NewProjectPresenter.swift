@@ -10,7 +10,6 @@ import AVFoundation
 
 protocol NewProjectPresenterInput {
     var navigationTitle: String { get }
-    var previewImage: UIImage? { get }
     var previewButtonTitle: String { get }
     var numberOfItemsInSection: Int { get }
     var backgroundColor: UIColor { get }
@@ -31,6 +30,8 @@ final class NewProjectPresenterImpl {
     // Injection
     private let coordinator: NewProjectCoordinator
     private weak var view: NewProjectView?
+    
+    private let canvasEngine: CanvasEngine
     private let renderEngine: RenderEngine
     
     // Locale
@@ -42,10 +43,12 @@ final class NewProjectPresenterImpl {
         coordinator: NewProjectCoordinator,
         view: NewProjectView,
         template: Template,
+        canvasEngine: CanvasEngine,
         renderEngine: RenderEngine
     ) {
         self.coordinator = coordinator
         self.view = view
+        self.canvasEngine = canvasEngine
         self.renderEngine = renderEngine
         
         self.project = Project(template: template)
@@ -54,8 +57,8 @@ final class NewProjectPresenterImpl {
     // MARK: - Private methods
     
     private func updatePreview() {
-        renderEngine.makePreviewFrame(project) { [self] in
-            view?.update(previewImage: $0)
+        canvasEngine.makeCanvas(project: project) { [unowned self] in
+            self.view?.update(previewImage: $0)
         }
     }
     
@@ -69,16 +72,12 @@ extension NewProjectPresenterImpl: NewProjectPresenterInput {
         project.template.name
     }
     
-    var previewImage: UIImage? {
-        nil
-    }
-    
     var previewButtonTitle: String {
         "!-!Preview"
     }
     
     var numberOfItemsInSection: Int {
-        3
+        project.template.imageFragments.count
     }
     
     var backgroundColor: UIColor {
@@ -96,17 +95,21 @@ extension NewProjectPresenterImpl: NewProjectPresenterOutput {
     }
     
     func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel {
-        ProjectAssetTableViewCellViewModel(asset: project.images[indexPath.row]) { [unowned self] in
+        ProjectAssetTableViewCellViewModel(asset: project.images[indexPath.row], uploadHandler: { [unowned self] in
             coordinator.navigateToAssetPicker { (image) in
                 guard let image = image else { return }
                 
-                project.images[indexPath.row] = image
+                self.project.addImage(image, for: indexPath.row)
                 
-                view?.reloadRow(for: indexPath)
+                self.view?.reloadRow(for: indexPath)
                 
-                updatePreview()
+                self.updatePreview()
             }
-        }
+        }, editHandler: { [unowned self] in
+            guard let image = project.images[indexPath.row] else { return }
+            
+            self.coordinator.navigateToEditImage(image)
+        })
     }
     
     func didPreview() {

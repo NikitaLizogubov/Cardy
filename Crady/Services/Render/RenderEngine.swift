@@ -37,7 +37,10 @@ final class RenderEngineImpl {
         let animationLayer = renderLayerFactory.makeAnimationLayer(for: videoTrack)
         let imageLayers = renderLayerFactory.makeImageLayers(images, positions: positions, for: videoTrack)
         
-        animationLayer.addSublayer(videoLayer)
+        if !Environment.isSimulator {
+            animationLayer.addSublayer(videoLayer)
+        }
+        
         animationLayer.addSublayers(imageLayers)
         
         // TODO: - Remove !
@@ -91,7 +94,7 @@ extension RenderEngineImpl: RenderEngine {
 
         addVideoAssets([project.template.asset!], for: videoTrack)
         
-        let documentDirectoryURL = fileManager.makeTampDirectory("result.mp4")
+        let documentDirectoryURL = fileManager.makeTampDirectory("result.mov")
 
         fileManager.removeFileIfExists(documentDirectoryURL)
 
@@ -105,13 +108,12 @@ extension RenderEngineImpl: RenderEngine {
     }
     
     private func export(composition: AVComposition, videoComposition: AVVideoComposition, outputURL: URL, completion: @escaping (URL) -> Void) {
-        let presetName = Environment.isSimulator ? AVAssetExportPresetPassthrough : AVAssetExportPresetHighestQuality
-        
-        guard let exportSession = AVAssetExportSession(asset: composition, presetName: presetName) else { return }
+        guard let exportSession = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetHighestQuality) else { return }
         
         exportSession.videoComposition = videoComposition
         exportSession.outputURL = outputURL
-        exportSession.outputFileType = AVFileType.mp4
+        exportSession.outputFileType = AVFileType.mov
+        exportSession.shouldOptimizeForNetworkUse = false
         exportSession.exportAsynchronously { [weak exportSession] in
             guard let url = exportSession?.outputURL else { return }
             

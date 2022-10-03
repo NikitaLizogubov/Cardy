@@ -12,6 +12,7 @@ protocol NewProjectCoordinator: AnyObject {
     func back()
     func navigateToAssetPicker(completion: @escaping (UIImage?) -> Void)
     func navigateToAssetPreview(with player: AVPlayer)
+    func navigateToEditImage(_ image: UIImage)
 }
 
 final class NewProjectCoordinatorImpl: Coordinator {
@@ -32,11 +33,13 @@ final class NewProjectCoordinatorImpl: Coordinator {
     
     override func start() {
         let viewController = NewProjectViewController()
+        let canvasEngine = CanvasEngineImpl()
         let renderEngine = RenderEngineImpl()
         let presenter = NewProjectPresenterImpl(
             coordinator: self,
             view: viewController,
             template: template,
+            canvasEngine: canvasEngine,
             renderEngine: renderEngine
         )
         viewController.presenter = presenter
@@ -68,6 +71,10 @@ extension NewProjectCoordinatorImpl: NewProjectCoordinator {
         viewController?.present(playerViewController, animated: true) {
             playerViewController.player!.play()
         }
+    }
+    
+    func navigateToEditImage(_ image: UIImage) {
+        print(#function)
     }
     
 }

@@ -50,6 +50,7 @@
 		8D2CE6B028E9B11400C74E4F /* background1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AD28E9B11400C74E4F /* background1.mp4 */; };
 		8D2CE6B128E9B11400C74E4F /* background3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AE28E9B11400C74E4F /* background3.mp4 */; };
 		8D2CE6B628E9D90B00C74E4F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6B528E9D90B00C74E4F /* Environment.swift */; };
+		8DFFD87B28EB3D5E00B3ED04 /* CanvasEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD87A28EB3D5E00B3ED04 /* CanvasEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		8D2CE6AD28E9B11400C74E4F /* background1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background1.mp4; sourceTree = "<group>"; };
 		8D2CE6AE28E9B11400C74E4F /* background3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background3.mp4; sourceTree = "<group>"; };
 		8D2CE6B528E9D90B00C74E4F /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		8DFFD87A28EB3D5E00B3ED04 /* CanvasEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +422,7 @@
 		8D2CE69028E8EA2900C74E4F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8DFFD87C28EB3D6200B3ED04 /* Canvas */,
 				14C6DEB828EA35E100D7F32B /* FileManager */,
 				8D2CE69128E8EAB800C74E4F /* Render */,
 			);
@@ -459,6 +462,14 @@
 				8D2CE6B528E9D90B00C74E4F /* Environment.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		8DFFD87C28EB3D6200B3ED04 /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				8DFFD87A28EB3D5E00B3ED04 /* CanvasEngine.swift */,
+			);
+			path = Canvas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -603,6 +614,7 @@
 				14C6DEA128EA2AEF00D7F32B /* RenderLayeFactory.swift in Sources */,
 				8D2CE6B628E9D90B00C74E4F /* Environment.swift in Sources */,
 				8D2CE67D28E8740400C74E4F /* ProjectAssetTableViewCell.swift in Sources */,
+				8DFFD87B28EB3D5E00B3ED04 /* CanvasEngine.swift in Sources */,
 				8D2CE67828E86F3500C74E4F /* NewProjectPresenter.swift in Sources */,
 				8D2CE68A28E8806700C74E4F /* Project.swift in Sources */,
 				8D2CE69328E8EAC800C74E4F /* RenderEngine.swift in Sources */,

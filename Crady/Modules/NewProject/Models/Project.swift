@@ -8,7 +8,26 @@
 import UIKit
 
 struct Project {
+    
+    // MARK: - Public properties
+    
     let template: Template
     
-    var images: [UIImage?] = Array(repeating: nil, count: 3)
+    private(set) var images: [UIImage?]
+    
+    // MARK: - Init
+    
+    init(template: Template) {
+        self.template = template
+        self.images = Array(repeating: nil, count: template.imageFragments.count)
+    }
+    
+    // MARK: - Public methods
+    
+    mutating func addImage(_ image: UIImage, for index: Int) {
+        guard index >= .zero && index < images.count else { return }
+        
+        images[index] = image
+    }
+    
 }

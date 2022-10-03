@@ -22,13 +22,15 @@ class ProjectAssetTableViewCell: UITableViewCell, CollectionCell {
         }
     }
     
-    // MARK: - Private methods
-    
     private func bindViewModel() {
         guard let viewModel = viewModel else { return }
  
         assetPreviewImageView.image = viewModel.assetPreviewImage
         assetTitleLabel.text = viewModel.assetTitle
+    }
+    
+    @IBAction private func didEdit(_ sender: Any) {
+        viewModel?.didEdit()
     }
     
 }

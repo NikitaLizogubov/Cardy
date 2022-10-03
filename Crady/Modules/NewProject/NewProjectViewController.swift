@@ -50,8 +50,6 @@ final class NewProjectViewController: UIViewController {
     private func initilizeComponents() {
         guard let presenter = presenter else { return }
         
-        previewImageView.image = presenter.previewImage
-        
         navigationItem.title = presenter.navigationTitle
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: presenter.previewButtonTitle,
