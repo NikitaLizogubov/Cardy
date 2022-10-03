@@ -15,7 +15,7 @@ protocol NewProjectPresenterInput {
 
 protocol NewProjectPresenterOutput {
     func viewDidLoad()
-    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel
+    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel?
 }
 
 typealias NewProjectPresenter = NewProjectPresenterInput & NewProjectPresenterOutput
@@ -27,29 +27,30 @@ final class NewProjectPresenterImpl {
     // Injection
     private let coordinator: NewProjectCoordinator
     private weak var view: NewProjectView?
-    
+    private let fragments: [Fragment]
     private let canvasEngine: CanvasEngine
-    
-    private let content: ImageContent
+    private let cellViewModelFactory: ProjectEditorCellViewModelFactory
     
     // MARK: - Init
     
     init(
         coordinator: NewProjectCoordinator,
         view: NewProjectView,
-        content: ImageContent,
-        canvasEngine: CanvasEngine
+        fragments: [Fragment],
+        canvasEngine: CanvasEngine,
+        cellViewModelFactory: ProjectEditorCellViewModelFactory
     ) {
         self.coordinator = coordinator
         self.view = view
+        self.fragments = fragments
         self.canvasEngine = canvasEngine
-        self.content = content
+        self.cellViewModelFactory = cellViewModelFactory
     }
     
     // MARK: - Private methods
     
     private func updatePreview() {
-        canvasEngine.makeCanvas(content: content) { [unowned self] in
+        canvasEngine.makeCanvas(fragments: fragments) { [unowned self] in
             self.view?.update(previewImage: $0)
         }
     }
@@ -61,7 +62,7 @@ final class NewProjectPresenterImpl {
 extension NewProjectPresenterImpl: NewProjectPresenterInput {
     
     var numberOfItemsInSection: Int {
-        content.fragments.count
+        fragments.count
     }
     
     var backgroundColor: UIColor {
@@ -78,22 +79,35 @@ extension NewProjectPresenterImpl: NewProjectPresenterOutput {
         updatePreview()
     }
     
-    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel {
-        ProjectAssetTableViewCellViewModel(asset: content.image(for: indexPath.row), uploadHandler: { [unowned self] in
-            coordinator.navigateToAssetPicker { (image) in
-                guard let image = image else { return }
+    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel? {
+        let index = indexPath.row
+        let fragment = fragments[index]
+        
+        return cellViewModelFactory.make(fragment: fragment, for: index, with: self)
+    }
+    
+}
 
-                self.content.addImage(image, for: indexPath.row)
+// MARK: - ProjectEditorCellViewModelDelegate
 
-                self.view?.reloadRow(for: indexPath)
+extension NewProjectPresenterImpl: ProjectEditorCellViewModelDelegate {
+    
+    func didUpload(fragment: ImageFragment, for index: Int) {
+        coordinator.navigateToAssetPicker { [self] (image) in
+            guard let image = image else { return }
 
-                self.updatePreview()
-            }
-        }, editHandler: { [unowned self] in
-            guard let image = self.content.image(for: indexPath.row) else { return }
-            
-            self.coordinator.navigateToEditImage(image)
-        })
+            fragment.image = image
+
+            view?.reloadRow(for: IndexPath(row: index, section: .zero))
+
+            updatePreview()
+        }
+    }
+    
+    func didEdit(fragment: ImageFragment) {
+        guard let image = fragment.image else { return }
+
+        coordinator.navigateToEditImage(image)
     }
     
 }

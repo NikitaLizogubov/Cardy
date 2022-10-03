@@ -17,14 +17,12 @@ final class NewProjectCoordinatorImpl: Coordinator {
     
     // MARK: - Private properties
     
-    private let project: Project
-    private let content: ImageContent
+    private let dependency: ProjectEntityDependency
     
     // MARK: - Init
     
-    init(project: Project, content: ImageContent, parentViewController: UIViewController?) {
-        self.project = project
-        self.content = content
+    init(dependency: ProjectEntityDependency, parentViewController: UIViewController?) {
+        self.dependency = dependency
         
         super.init(parentViewController: parentViewController)
     }
@@ -33,12 +31,12 @@ final class NewProjectCoordinatorImpl: Coordinator {
     
     override func generateModule() -> UIViewController {
         let viewController = NewProjectViewController()
-        let canvasEngine = CanvasEngineImpl(internalSize: project.size)
         let presenter = NewProjectPresenterImpl(
             coordinator: self,
             view: viewController,
-            content: content,
-            canvasEngine: canvasEngine
+            fragments: dependency.fragments,
+            canvasEngine: dependency.canvasEngine,
+            cellViewModelFactory: dependency.cellViewModelFactory
         )
         viewController.presenter = presenter
         

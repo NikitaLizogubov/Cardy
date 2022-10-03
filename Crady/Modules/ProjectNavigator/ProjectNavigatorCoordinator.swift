@@ -29,15 +29,27 @@ final class ProjectNavigatorCoordinatorImpl: Coordinator {
     // MARK: - Override
     
     override func start() {
-        let factory = ProjectFragmentEditorFactoryImp()
         let renderEngine = RenderEngineImpl()
+        let canvasEngine = CanvasEngineImpl(internalSize: project.size)
+        let cellViewModelFactory = ProjectEditorCellViewModelFactoryImpl()
         
         let viewController = ProjectNavigatorViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        let presenter = ProjectNavigatorPresenterImpl(coordinator: self, view: viewController, project: project, renderEngine: renderEngine)
+        let presenter = ProjectNavigatorPresenterImpl(
+            coordinator: self,
+            view: viewController,
+            project: project,
+            renderEngine: renderEngine
+        )
         
         viewController.presenter = presenter
         viewController.setViewControllers(project.content.compactMap({
-            factory.makeCoordinator(project: project, content: $0, parentViewController: parentViewController)?.generateModule()
+            let dependency = ProjectEntityDependency(
+                fragments: $0.fragments,
+                canvasEngine: canvasEngine,
+                cellViewModelFactory: cellViewModelFactory
+            )
+            
+            return NewProjectCoordinatorImpl(dependency: dependency, parentViewController: parentViewController).generateModule()
         }))
         
         self.viewController = viewController

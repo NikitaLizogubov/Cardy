@@ -49,12 +49,17 @@
 		8D2CE6B028E9B11400C74E4F /* background1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AD28E9B11400C74E4F /* background1.mp4 */; };
 		8D2CE6B128E9B11400C74E4F /* background3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D2CE6AE28E9B11400C74E4F /* background3.mp4 */; };
 		8D2CE6B628E9D90B00C74E4F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2CE6B528E9D90B00C74E4F /* Environment.swift */; };
+		8D71748D28EB88C3001C51D5 /* CanvasEngineFragmentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71748C28EB88C3001C51D5 /* CanvasEngineFragmentFactory.swift */; };
+		8D71749828EB9501001C51D5 /* ProjectEditorCellViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71749728EB94D5001C51D5 /* ProjectEditorCellViewModelFactory.swift */; };
+		8D71749B28EB95E8001C51D5 /* ProjectEntityDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71749A28EB95E8001C51D5 /* ProjectEntityDependency.swift */; };
+		8D71749D28EB96C6001C51D5 /* ImageFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71749C28EB96C6001C51D5 /* ImageFragment.swift */; };
+		8D7174A028EB96F0001C51D5 /* Fragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71749F28EB96F0001C51D5 /* Fragment.swift */; };
+		8D7174A228EB96FD001C51D5 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7174A128EB96FD001C51D5 /* Content.swift */; };
 		8DFFD87B28EB3D5E00B3ED04 /* CanvasEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD87A28EB3D5E00B3ED04 /* CanvasEngine.swift */; };
 		8DFFD88028EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD87F28EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift */; };
 		8DFFD88328EB540700B3ED04 /* ProjectNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD88128EB540700B3ED04 /* ProjectNavigatorViewController.swift */; };
 		8DFFD88428EB540700B3ED04 /* ProjectNavigatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DFFD88228EB540700B3ED04 /* ProjectNavigatorViewController.xib */; };
 		8DFFD88628EB551A00B3ED04 /* ProjectNavigatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD88528EB551A00B3ED04 /* ProjectNavigatorPresenter.swift */; };
-		8DFFD88928EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFD88828EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,12 +126,17 @@
 		8D2CE6AD28E9B11400C74E4F /* background1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background1.mp4; sourceTree = "<group>"; };
 		8D2CE6AE28E9B11400C74E4F /* background3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background3.mp4; sourceTree = "<group>"; };
 		8D2CE6B528E9D90B00C74E4F /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		8D71748C28EB88C3001C51D5 /* CanvasEngineFragmentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasEngineFragmentFactory.swift; sourceTree = "<group>"; };
+		8D71749728EB94D5001C51D5 /* ProjectEditorCellViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditorCellViewModelFactory.swift; sourceTree = "<group>"; };
+		8D71749A28EB95E8001C51D5 /* ProjectEntityDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEntityDependency.swift; sourceTree = "<group>"; };
+		8D71749C28EB96C6001C51D5 /* ImageFragment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFragment.swift; sourceTree = "<group>"; };
+		8D71749F28EB96F0001C51D5 /* Fragment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fragment.swift; sourceTree = "<group>"; };
+		8D7174A128EB96FD001C51D5 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		8DFFD87A28EB3D5E00B3ED04 /* CanvasEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasEngine.swift; sourceTree = "<group>"; };
 		8DFFD87F28EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNavigatorCoordinator.swift; sourceTree = "<group>"; };
 		8DFFD88128EB540700B3ED04 /* ProjectNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNavigatorViewController.swift; sourceTree = "<group>"; };
 		8DFFD88228EB540700B3ED04 /* ProjectNavigatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectNavigatorViewController.xib; sourceTree = "<group>"; };
 		8DFFD88528EB551A00B3ED04 /* ProjectNavigatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNavigatorPresenter.swift; sourceTree = "<group>"; };
-		8DFFD88828EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFragmentEditorFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +393,7 @@
 		8D2CE67028E86F0800C74E4F /* NewProject */ = {
 			isa = PBXGroup;
 			children = (
+				8D71749628EB94CD001C51D5 /* Factorys */,
 				8D2CE67928E873E400C74E4F /* Views */,
 				8D2CE67528E86F2C00C74E4F /* NewProjectCoordinator.swift */,
 				8D2CE67728E86F3500C74E4F /* NewProjectPresenter.swift */,
@@ -453,6 +464,8 @@
 			isa = PBXGroup;
 			children = (
 				8D2CE6A028E9ADF600C74E4F /* Project.swift */,
+				8D7174A128EB96FD001C51D5 /* Content.swift */,
+				8D71749E28EB96CB001C51D5 /* Fragments */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -465,10 +478,36 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		8D71749628EB94CD001C51D5 /* Factorys */ = {
+			isa = PBXGroup;
+			children = (
+				8D71749728EB94D5001C51D5 /* ProjectEditorCellViewModelFactory.swift */,
+			);
+			path = Factorys;
+			sourceTree = "<group>";
+		};
+		8D71749928EB95D5001C51D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8D71749A28EB95E8001C51D5 /* ProjectEntityDependency.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8D71749E28EB96CB001C51D5 /* Fragments */ = {
+			isa = PBXGroup;
+			children = (
+				8D71749F28EB96F0001C51D5 /* Fragment.swift */,
+				8D71749C28EB96C6001C51D5 /* ImageFragment.swift */,
+			);
+			path = Fragments;
+			sourceTree = "<group>";
+		};
 		8DFFD87C28EB3D6200B3ED04 /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
 				8DFFD87A28EB3D5E00B3ED04 /* CanvasEngine.swift */,
+				8D71748C28EB88C3001C51D5 /* CanvasEngineFragmentFactory.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -483,21 +522,13 @@
 		8DFFD87E28EB533A00B3ED04 /* ProjectNavigator */ = {
 			isa = PBXGroup;
 			children = (
-				8DFFD88728EB5F9300B3ED04 /* Factories */,
+				8D71749928EB95D5001C51D5 /* Models */,
 				8DFFD87F28EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift */,
 				8DFFD88528EB551A00B3ED04 /* ProjectNavigatorPresenter.swift */,
 				8DFFD88128EB540700B3ED04 /* ProjectNavigatorViewController.swift */,
 				8DFFD88228EB540700B3ED04 /* ProjectNavigatorViewController.xib */,
 			);
 			path = ProjectNavigator;
-			sourceTree = "<group>";
-		};
-		8DFFD88728EB5F9300B3ED04 /* Factories */ = {
-			isa = PBXGroup;
-			children = (
-				8DFFD88828EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift */,
-			);
-			path = Factories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -642,11 +673,13 @@
 				8D2CE62728E8578C00C74E4F /* Crady.xcdatamodeld in Sources */,
 				14C6DEA128EA2AEF00D7F32B /* RenderLayeFactory.swift in Sources */,
 				8D2CE6B628E9D90B00C74E4F /* Environment.swift in Sources */,
+				8D7174A228EB96FD001C51D5 /* Content.swift in Sources */,
 				8D2CE67D28E8740400C74E4F /* ProjectAssetTableViewCell.swift in Sources */,
 				8DFFD87B28EB3D5E00B3ED04 /* CanvasEngine.swift in Sources */,
 				8D2CE67828E86F3500C74E4F /* NewProjectPresenter.swift in Sources */,
 				8D2CE69328E8EAC800C74E4F /* RenderEngine.swift in Sources */,
 				8D2CE6A128E9ADF600C74E4F /* Project.swift in Sources */,
+				8D71749B28EB95E8001C51D5 /* ProjectEntityDependency.swift in Sources */,
 				8D2CE67328E86F2000C74E4F /* NewProjectViewController.swift in Sources */,
 				8D2CE65628E85D8000C74E4F /* Coordinator.swift in Sources */,
 				14C6DEB728EA31B900D7F32B /* ActivityViewModel.swift in Sources */,
@@ -654,18 +687,21 @@
 				8D2CE65128E85D5200C74E4F /* RootCoordinator.swift in Sources */,
 				8D2CE66328E8666100C74E4F /* TemplateCollectionViewCell.swift in Sources */,
 				8D2CE61D28E8578C00C74E4F /* AppDelegate.swift in Sources */,
-				8DFFD88928EB5FB000B3ED04 /* ProjectFragmentEditorFactory.swift in Sources */,
 				14C6DEBA28EA35F000D7F32B /* FileManager.swift in Sources */,
 				14C6DEB028EA313A00D7F32B /* UIView+addFullSubview.swift in Sources */,
+				8D7174A028EB96F0001C51D5 /* Fragment.swift in Sources */,
 				8D2CE68028E8741900C74E4F /* ProjectAssetTableViewCellViewModel.swift in Sources */,
+				8D71749D28EB96C6001C51D5 /* ImageFragment.swift in Sources */,
 				8DFFD88028EB53D600B3ED04 /* ProjectNavigatorCoordinator.swift in Sources */,
 				8D2CE61F28E8578C00C74E4F /* SceneDelegate.swift in Sources */,
 				8D2CE65E28E861EC00C74E4F /* RootPresenter.swift in Sources */,
 				8DFFD88628EB551A00B3ED04 /* ProjectNavigatorPresenter.swift in Sources */,
 				8D2CE67628E86F2C00C74E4F /* NewProjectCoordinator.swift in Sources */,
+				8D71749828EB9501001C51D5 /* ProjectEditorCellViewModelFactory.swift in Sources */,
 				8D2CE68528E879B100C74E4F /* AssetPickerCoordinator.swift in Sources */,
 				8D2CE66628E866D800C74E4F /* TemplateCollectionViewCellViewModel.swift in Sources */,
 				8D2CE66D28E8693000C74E4F /* CollectionCell.swift in Sources */,
+				8D71748D28EB88C3001C51D5 /* CanvasEngineFragmentFactory.swift in Sources */,
 				8D2CE66B28E8674800C74E4F /* CollectionCellViewModel.swift in Sources */,
 				14C6DEAC28EA310D00D7F32B /* XibView.swift in Sources */,
 				8D2CE68728E87AE500C74E4F /* AssetPickerPresenter.swift in Sources */,

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CanvasEngine {
-    func makeCanvas(content: Content, completion: @escaping (UIImage?) -> Void)
+    func makeCanvas(fragments: [Fragment], completion: @escaping (UIImage?) -> Void)
 }
 
 final class CanvasEngineImpl {
@@ -18,11 +18,13 @@ final class CanvasEngineImpl {
     private let queue = DispatchQueue(label: "CanvasEngine.Cardy.com", qos: .userInitiated, attributes: [.concurrent])
     
     private let size: CGSize
+    private let fragmentFactory: CanvasEngineFragmentFactory
     
     // MARK: - Init
     
-    init(internalSize: CGSize) {
+    init(internalSize: CGSize, fragmentFactory: CanvasEngineFragmentFactory = CanvasEngineFragmentFactoryImpl()) {
         self.size = internalSize
+        self.fragmentFactory = fragmentFactory
     }
     
 }
@@ -31,26 +33,21 @@ final class CanvasEngineImpl {
 
 extension CanvasEngineImpl: CanvasEngine {
     
-    func makeCanvas(content: Content, completion: @escaping (UIImage?) -> Void) {
-        queue.async {
-            let rect = CGRect(origin: .zero, size: self.size)
+    func makeCanvas(fragments: [Fragment], completion: @escaping (UIImage?) -> Void) {
+        queue.async { [size, fragmentFactory] in
+            let rect = CGRect(origin: .zero, size: size)
             
             let mainLayer = CALayer()
             mainLayer.frame = rect
             mainLayer.backgroundColor = UIColor.black.cgColor
             
-            let fragmentLayers = content.fragments.enumerated().map({ (index, fragment) in
+            let fragmentLayers = fragments.enumerated().map({ (index, fragment) in
                 let position = fragment.position
                 
-                let point = CGPoint(x: self.size.width - position.x, y: self.size.height - position.y)
+                let point = CGPoint(x: size.width - position.x, y: size.height - position.y)
                 let frame = CGRect(origin: point, size: CGSize(width: 400.0, height: 400.0))
                 
-                let layer = CALayer()
-                layer.contents = (fragment as? ImageFragment)?.image?.cgImage
-                layer.frame = frame
-                layer.borderColor = fragment.borderColor.cgColor
-                layer.borderWidth = fragment.borderWith
-                return layer
+                return fragmentFactory.make(frame: frame, fragment: fragment)
             })
             
             mainLayer.addSublayers(fragmentLayers)
