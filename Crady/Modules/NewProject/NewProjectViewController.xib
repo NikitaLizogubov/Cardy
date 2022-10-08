@@ -22,14 +22,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hW2-RP-vRQ">
-                    <rect key="frame" x="0.0" y="48" width="414" height="530"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hW2-RP-vRQ">
+                    <rect key="frame" x="32" y="48" width="350" height="525"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pag-LC-NsO">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="530"/>
+                            <rect key="frame" x="0.0" y="0.0" width="350" height="525"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="pag-LC-NsO" secondAttribute="trailing" id="XUl-Vc-DcJ"/>
                         <constraint firstItem="pag-LC-NsO" firstAttribute="top" secondItem="hW2-RP-vRQ" secondAttribute="top" id="iaS-LG-4NG"/>
@@ -37,8 +37,8 @@
                         <constraint firstItem="pag-LC-NsO" firstAttribute="leading" secondItem="hW2-RP-vRQ" secondAttribute="leading" id="mij-Jv-jYh"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="epB-IT-sNE">
-                    <rect key="frame" x="0.0" y="578" width="414" height="318"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="epB-IT-sNE">
+                    <rect key="frame" x="0.0" y="581" width="414" height="315"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
@@ -47,12 +47,12 @@
             <constraints>
                 <constraint firstItem="epB-IT-sNE" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="PCW-qe-5MW"/>
                 <constraint firstItem="epB-IT-sNE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wlc-u6-Kvs"/>
-                <constraint firstItem="hW2-RP-vRQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fcB-aq-VPf"/>
+                <constraint firstItem="hW2-RP-vRQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="fcB-aq-VPf"/>
                 <constraint firstAttribute="bottom" secondItem="epB-IT-sNE" secondAttribute="bottom" id="hst-UA-TG7"/>
                 <constraint firstItem="epB-IT-sNE" firstAttribute="height" secondItem="hW2-RP-vRQ" secondAttribute="height" multiplier="0.6" id="itw-Jv-6Yg"/>
                 <constraint firstItem="hW2-RP-vRQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qz7-ob-uej"/>
-                <constraint firstItem="hW2-RP-vRQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="uEc-YS-8GF"/>
-                <constraint firstItem="epB-IT-sNE" firstAttribute="top" secondItem="hW2-RP-vRQ" secondAttribute="bottom" id="uUG-9c-4Mt"/>
+                <constraint firstItem="hW2-RP-vRQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-32" id="uEc-YS-8GF"/>
+                <constraint firstItem="epB-IT-sNE" firstAttribute="top" secondItem="hW2-RP-vRQ" secondAttribute="bottom" constant="8" id="uUG-9c-4Mt"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="130.58035714285714"/>
         </view>
@@ -60,9 +60,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

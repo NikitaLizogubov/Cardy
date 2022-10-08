@@ -21,7 +21,8 @@ final class NewProjectViewController: UIViewController {
     @IBOutlet private weak var previewImageView: UIImageView!
     @IBOutlet private weak var assetsTableView: UITableView! {
         didSet {
-            assetsTableView.register(ImageAssetTableViewCell.nib, forCellReuseIdentifier: ImageAssetTableViewCell.reuseIdentifier)
+            assetsTableView.register(AssetTableViewCell.nib, forCellReuseIdentifier: AssetTableViewCell.reuseIdentifier)
+            
             assetsTableView.dataSource = self
             assetsTableView.delegate = self
         }
@@ -38,15 +39,22 @@ final class NewProjectViewController: UIViewController {
         
         presenter?.viewDidLoad()
         
+        setupUI()
         initilizeComponents()
     }
     
     // MARK: - Private methods
     
+    private func setupUI() {
+        previewView.layer.cornerRadius = 16.0
+    }
+    
     private func initilizeComponents() {
         guard let presenter = presenter else { return }
         
-        view.backgroundColor = presenter.backgroundColor
+        [view, assetsTableView].forEach({
+            $0?.backgroundColor = presenter.backgroundColor
+        })
     }
 
 }
@@ -63,8 +71,8 @@ extension NewProjectViewController: UITableViewDataSource {
         guard let viewModel = presenter?.cellViewModel(for: indexPath) else { return UITableViewCell() }
         
         switch viewModel {
-        case let viewModel as ImageAssetTableViewCellViewModelType:
-            let cell = ImageAssetTableViewCell.make(tableView, for: indexPath)
+        case let viewModel as AssetCellViewModelType:
+            let cell = AssetTableViewCell.make(tableView, for: indexPath)
             cell.viewModel = viewModel
             return cell
         default:
@@ -101,7 +109,7 @@ extension NewProjectViewController: NewProjectView {
     }
     
     func reloadRow(for indexPath: IndexPath) {
-        assetsTableView.reloadRows(at: [indexPath], with: .automatic)
+        assetsTableView.reloadRows(at: [indexPath], with: .none)
     }
     
 }

@@ -14,7 +14,7 @@ protocol TemplateCollectionViewCellViewModelInput {
 
 typealias TemplateCollectionViewCellViewModelType = TemplateCollectionViewCellViewModelInput
 
-final class TemplateCollectionViewCellViewModel: CollectionCellViewModel {
+final class TemplateCollectionViewCellViewModel: CellViewModel {
     
     // MARK: - Private properties
     

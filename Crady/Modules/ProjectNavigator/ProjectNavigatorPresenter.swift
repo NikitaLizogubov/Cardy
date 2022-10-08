@@ -9,18 +9,24 @@ import UIKit
 import AVFoundation
 
 protocol ProjectNavigatorPresenterInput {
-    var navigationTitle: String { get }
-    var previewButtonTitle: String { get }
+    var navigationViewModel: NavigationViewModelType { get }
+    var numberOfItemsInSection: Int { get }
+    var cellViewModels: [CellViewModel] { get }
     var backgroundColor: UIColor { get }
+    var assetContainerBackgroundColor: UIColor { get }
 }
 
 protocol ProjectNavigatorPresenterOutput {
-    func didPreview()
+    
 }
 
 typealias ProjectNavigatorPresenter = ProjectNavigatorPresenterInput & ProjectNavigatorPresenterOutput
 
 final class ProjectNavigatorPresenterImpl {
+    
+    // MARK: - Public properties
+    
+    var cellViewModels: [CellViewModel] = []
     
     // MARK: - Private properties
     
@@ -31,6 +37,9 @@ final class ProjectNavigatorPresenterImpl {
     private var project: Project
     private var renderEngine: RenderEngine
     
+    // Locale
+    private let assets: [AssetEdit]
+    
     // MARK: - Init
     
     init(coordinator: ProjectNavigatorCoordinator, view: ProjectNavigatorView, project: Project, renderEngine: RenderEngine) {
@@ -38,6 +47,46 @@ final class ProjectNavigatorPresenterImpl {
         self.view = view
         self.project = project
         self.renderEngine = renderEngine
+        
+        self.assets = AssetEdit.allCases
+        
+        self.setupCellViewModels()
+    }
+    
+    // MARK: - Private methods
+    
+    private func setupCellViewModels() {
+        cellViewModels = assets.map({ model in
+            AssetEditCollectionCellViewModel(model: model) { [weak self] in
+                switch model {
+                case .preview:
+                    self?.preview()
+                case .canvas:
+                    return
+                case .music:
+                    return
+                case .filter:
+                    return
+                case .speed:
+                    return
+                case .trim:
+                    return
+                case .text:
+                    return
+                }
+            }
+        })
+    }
+    
+    private func preview() {
+        renderEngine.makePreview(project) {
+            guard let asset = $0 else { return }
+            
+            let playerItem = AVPlayerItem(asset: asset)
+            let player = AVPlayer(playerItem: playerItem)
+            
+            self.coordinator.navigateToAssetPreview(with: player)
+        }
     }
     
 }
@@ -46,16 +95,22 @@ final class ProjectNavigatorPresenterImpl {
 
 extension ProjectNavigatorPresenterImpl: ProjectNavigatorPresenterInput {
     
-    var navigationTitle: String {
-        project.name
+    var navigationViewModel: NavigationViewModelType {
+        NavigationViewModel { [unowned self] in
+            coordinator.back()
+        }
     }
     
-    var previewButtonTitle: String {
-        "!-!Preview"
+    var numberOfItemsInSection: Int {
+        assets.count
     }
     
     var backgroundColor: UIColor {
-        .systemBackground
+        Resources.Colors.Common.black
+    }
+    
+    var assetContainerBackgroundColor: UIColor {
+        Resources.Colors.Common.grayIV
     }
     
 }
@@ -64,20 +119,7 @@ extension ProjectNavigatorPresenterImpl: ProjectNavigatorPresenterInput {
 
 extension ProjectNavigatorPresenterImpl: ProjectNavigatorPresenterOutput {
     
-    func didPreview() {
-//        view?.startLoading()
-
-        renderEngine.makePreviewAsset(project) { [self] in
-            guard let asset = $0 else { return }
-
-            let playerItem = AVPlayerItem(asset: asset)
-            let player = AVPlayer(playerItem: playerItem)
-
-            coordinator.navigateToAssetPreview(with: player)
-
-//            view?.stopLoading()
-        }
-    }
+    
     
 }
 

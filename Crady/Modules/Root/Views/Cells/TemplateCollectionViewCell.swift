@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TemplateCollectionViewCell: UICollectionViewCell, CollectionCell {
+final class TemplateCollectionViewCell: UICollectionViewCell, Cell {
     
     // MARK: - @IBOutlets
     

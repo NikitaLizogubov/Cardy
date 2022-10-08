@@ -10,13 +10,15 @@ import UIKit
 protocol RootPresenter {
     var navigationTitle: String { get }
     var numberOfItemsInSection: Int { get }
-    
-    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel
-    
+    var cellViewModels: [CellViewModel] { get }
     var backgroundColor: UIColor { get }
 }
 
 final class RootPresenterImpl {
+    
+    // MARK: - Public properties
+    
+    var cellViewModels: [CellViewModel] = []
     
     // MARK: - Private properties
     
@@ -25,7 +27,7 @@ final class RootPresenterImpl {
     private weak var view: RootView?
     
     // Locale
-    private let project: [Project]
+    private let projects: [Project]
     
     // MARK: - Init
     
@@ -33,7 +35,19 @@ final class RootPresenterImpl {
         self.coordinator = coordinator
         self.view = view
         
-        self.project = Project.mock
+        self.projects = Project.mock
+        
+        self.setupCellViewModels()
+    }
+    
+    // MARK: - Private methods
+    
+    private func setupCellViewModels() {
+        cellViewModels = projects.map({ project in
+            TemplateCollectionViewCellViewModel(project: project) { [unowned self] in
+                coordinator.navigateToCreateNewProject(using: project)
+            }
+        })
     }
     
 }
@@ -47,13 +61,7 @@ extension RootPresenterImpl: RootPresenter {
     }
     
     var numberOfItemsInSection: Int {
-        project.count
-    }
-    
-    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel {
-        TemplateCollectionViewCellViewModel(project: project[indexPath.row]) { [unowned self] in
-            coordinator.navigateToCreateNewProject(using: project[indexPath.row])
-        }
+        projects.count
     }
     
     var backgroundColor: UIColor {

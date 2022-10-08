@@ -33,7 +33,9 @@ extension Project {
                 name: "Template 1",
                 content: [
                     Content(fragments: [
-                        TextFragment(position: CGPoint(x: size.width - 40.0, y: size.height - 40.0), text: "Type here!")
+                        ImageFragment(position: CGPoint(x: size.width - 40.0, y: size.height - 40.0)),
+                        TextFragment(position: CGPoint(x: size.width - 40.0, y: size.height - 400.0 - 80.0), text: "Type here!"),
+                        TextFragment(position: CGPoint(x: size.width - 40.0, y: size.height - 800.0 - 120.0), text: "Type here!")
                     ], backgroundURL: Bundle.main.url(forResource: "background1", withExtension: ".jpeg")),
                     Content(fragments: [
                         ImageFragment(position: CGPoint(x: size.width - 40.0, y: size.height - 40.0)),

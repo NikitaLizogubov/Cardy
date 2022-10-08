@@ -30,6 +30,7 @@ extension FragmentLayerFactoryImpl: FragmentLayerFactory {
             let layer = CATextLayer()
             layer.frame = frame
             layer.string = fragment.text
+            layer.fontSize = 64.0
             layer.foregroundColor = fragment.textColor.cgColor
             return layer
         default:

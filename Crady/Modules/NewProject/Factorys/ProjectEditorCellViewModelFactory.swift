@@ -8,13 +8,12 @@
 import UIKit
 
 protocol ProjectEditorCellViewModelDelegate: AnyObject {
-    func didUpload(fragment: ImageFragment, for index: Int)
-    func didEdit(fragment: ImageFragment)
-    func didRemove(fragment: ImageFragment, for index: Int)
+    func didEdit(fragment: ImageFragment, for index: Int)
+    func didEdit(fragment: TextFragment, for index: Int)
 }
 
 protocol ProjectEditorCellViewModelFactory {
-    func make(fragment: Fragment, for index: Int, with delegate: ProjectEditorCellViewModelDelegate) -> CollectionCellViewModel?
+    func make(fragment: Fragment, for index: Int, with delegate: ProjectEditorCellViewModelDelegate) -> CellViewModel?
 }
 
 struct ProjectEditorCellViewModelFactoryImpl { }
@@ -23,16 +22,17 @@ struct ProjectEditorCellViewModelFactoryImpl { }
 
 extension ProjectEditorCellViewModelFactoryImpl: ProjectEditorCellViewModelFactory {
     
-    func make(fragment: Fragment, for index: Int, with delegate: ProjectEditorCellViewModelDelegate) -> CollectionCellViewModel? {
+    func make(fragment: Fragment, for index: Int, with delegate: ProjectEditorCellViewModelDelegate) -> CellViewModel? {
         switch fragment {
         case let fragment as ImageFragment:
-            let viewModel = ImageAssetTableViewCellViewModel(asset: fragment.image, uploadHandler: {
-                delegate.didUpload(fragment: fragment, for: index)
-            }, editHandler: {
-                delegate.didEdit(fragment: fragment)
-            }, removeHandler: {
-                delegate.didRemove(fragment: fragment, for: index)
-            })
+            let viewModel = ImageAssetTableViewCellViewModel(fragment: fragment) {
+                delegate.didEdit(fragment: fragment, for: index)
+            }
+            return viewModel
+        case let fragment as TextFragment:
+            let viewModel = TextAssetTableViewCellViewModel(fragment: fragment) {
+                delegate.didEdit(fragment: fragment, for: index)
+            }
             return viewModel
         default:
             return nil

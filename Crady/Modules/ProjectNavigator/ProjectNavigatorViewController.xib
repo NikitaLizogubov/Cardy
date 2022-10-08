@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProjectNavigatorViewController" customModule="Сardy" customModuleProvider="target">
             <connections>
+                <outlet property="assetCollectionView" destination="Gdc-9c-aoq" id="Mm2-B1-NP1"/>
+                <outlet property="assetContainerView" destination="Mrt-iJ-7OZ" id="MIs-EL-efx"/>
+                <outlet property="containerView" destination="psN-D6-JXa" id="sdK-Jj-gc7"/>
+                <outlet property="navigationView" destination="wju-wN-Ekn" id="8QP-bW-118"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,14 +22,60 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrt-iJ-7OZ">
+                    <rect key="frame" x="0.0" y="720" width="390" height="124"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Gdc-9c-aoq">
+                            <rect key="frame" x="0.0" y="16" width="390" height="74"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewLayout key="collectionViewLayout" id="jZW-y0-mIb" customClass="ProjectNavigatorCollectionLayout" customModule="Сardy" customModuleProvider="target"/>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="124" id="1ho-5M-cBS"/>
+                        <constraint firstAttribute="trailing" secondItem="Gdc-9c-aoq" secondAttribute="trailing" id="4b6-ef-ZvX"/>
+                        <constraint firstItem="Gdc-9c-aoq" firstAttribute="top" secondItem="Mrt-iJ-7OZ" secondAttribute="top" constant="16" id="iNi-Yj-Cy2"/>
+                        <constraint firstItem="Gdc-9c-aoq" firstAttribute="leading" secondItem="Mrt-iJ-7OZ" secondAttribute="leading" id="uiI-uO-1xJ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psN-D6-JXa">
+                    <rect key="frame" x="0.0" y="101" width="390" height="619"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wju-wN-Ekn" customClass="NavigationView" customModule="Сardy" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="47" width="390" height="54"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="n54-QS-wAV"/>
+                    </constraints>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="-17" y="-11"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Mrt-iJ-7OZ" secondAttribute="bottom" id="1L9-ro-fFW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Gdc-9c-aoq" secondAttribute="bottom" id="BBT-jh-oKs"/>
+                <constraint firstItem="wju-wN-Ekn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="DyF-Ev-NLF"/>
+                <constraint firstItem="wju-wN-Ekn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ExK-gj-vFj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="psN-D6-JXa" secondAttribute="trailing" id="ITf-ye-OFc"/>
+                <constraint firstItem="Mrt-iJ-7OZ" firstAttribute="top" secondItem="psN-D6-JXa" secondAttribute="bottom" id="Kdh-8X-SCo"/>
+                <constraint firstItem="psN-D6-JXa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TyJ-Ib-k1k"/>
+                <constraint firstItem="psN-D6-JXa" firstAttribute="top" secondItem="wju-wN-Ekn" secondAttribute="bottom" id="WyV-gV-dpu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wju-wN-Ekn" secondAttribute="trailing" id="aF3-1G-r0t"/>
+                <constraint firstItem="Mrt-iJ-7OZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ktg-5Q-fyD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Mrt-iJ-7OZ" secondAttribute="trailing" id="xiV-T7-T5z"/>
+            </constraints>
+            <point key="canvasLocation" x="-18.46153846153846" y="-11.374407582938389"/>
         </view>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

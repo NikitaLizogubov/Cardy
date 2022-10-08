@@ -56,7 +56,7 @@ extension RootViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let viewModel = presenter?.cellViewModel(for: indexPath) else { return UICollectionViewCell() }
+        guard let viewModel = presenter?.cellViewModels[indexPath.row] else { return UICollectionViewCell() }
         
         switch viewModel {
         case let viewModel as TemplateCollectionViewCellViewModelType:
@@ -75,7 +75,7 @@ extension RootViewController: UICollectionViewDataSource {
 extension RootViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let viewModel = presenter?.cellViewModel(for: indexPath) else { return }
+        guard let viewModel = presenter?.cellViewModels[indexPath.row] else { return }
         
         viewModel.didSelect()
     }

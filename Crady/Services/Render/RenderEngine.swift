@@ -10,7 +10,7 @@ import AVFoundation
 import VideoToolbox
 
 protocol RenderEngine {
-    func makePreviewAsset(_ project: Project, completion: @escaping (AVAsset?) -> Void)
+    func makePreview(_ project: Project, completion: @escaping (AVAsset?) -> Void)
 }
 
 final class RenderEngineImpl {
@@ -136,7 +136,7 @@ final class RenderEngineImpl {
 
 extension RenderEngineImpl: RenderEngine {
     
-    func makePreviewAsset(_ project: Project, completion: @escaping (AVAsset?) -> Void) {
+    func makePreview(_ project: Project, completion: @escaping (AVAsset?) -> Void) {
         makeAssets(project) { [self] in
             makeOverlayAssets(project, $0) { [self] in
                 let composition = AVMutableComposition()

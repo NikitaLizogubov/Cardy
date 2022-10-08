@@ -9,6 +9,7 @@ import UIKit
 import AVKit
 
 protocol ProjectNavigatorCoordinator: AnyObject {
+    func back()
     func navigateToAssetPreview(with player: AVPlayer)
 }
 
@@ -36,7 +37,7 @@ final class ProjectNavigatorCoordinatorImpl: Coordinator {
         let canvasEngine = CanvasEngineImpl(internalSize: Project.size, fragmentFactory: fragmentFactory)
         let cellViewModelFactory = ProjectEditorCellViewModelFactoryImpl()
         
-        let viewController = ProjectNavigatorViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        let viewController = ProjectNavigatorViewController()
         let presenter = ProjectNavigatorPresenterImpl(
             coordinator: self,
             view: viewController,
@@ -66,6 +67,10 @@ final class ProjectNavigatorCoordinatorImpl: Coordinator {
 // MARK: - ProjectNavigatorCoordinator
 
 extension ProjectNavigatorCoordinatorImpl: ProjectNavigatorCoordinator {
+    
+    func back() {
+        (parentViewController as? UINavigationController)?.popViewController(animated: true)
+    }
     
     func navigateToAssetPreview(with player: AVPlayer) {
         let playerViewController = AVPlayerViewController()

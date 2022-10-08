@@ -33,6 +33,7 @@ final class RootCoordinatorImpl: Coordinator {
         viewController.presenter = presenter
         
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.setNavigationBarHidden(true, animated: false)
         
         self.viewController = navigationController
         

@@ -15,7 +15,7 @@ protocol NewProjectPresenterInput {
 
 protocol NewProjectPresenterOutput {
     func viewDidLoad()
-    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel?
+    func cellViewModel(for indexPath: IndexPath) -> CellViewModel?
 }
 
 typealias NewProjectPresenter = NewProjectPresenterInput & NewProjectPresenterOutput
@@ -66,7 +66,7 @@ extension NewProjectPresenterImpl: NewProjectPresenterInput {
     }
     
     var backgroundColor: UIColor {
-        .systemBackground
+        .black
     }
     
 }
@@ -79,7 +79,7 @@ extension NewProjectPresenterImpl: NewProjectPresenterOutput {
         updatePreview()
     }
     
-    func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel? {
+    func cellViewModel(for indexPath: IndexPath) -> CellViewModel? {
         let index = indexPath.row
         let fragment = content.fragments[index]
         
@@ -92,7 +92,7 @@ extension NewProjectPresenterImpl: NewProjectPresenterOutput {
 
 extension NewProjectPresenterImpl: ProjectEditorCellViewModelDelegate {
     
-    func didUpload(fragment: ImageFragment, for index: Int) {
+    func didEdit(fragment: ImageFragment, for index: Int) {
         coordinator.navigateToAssetPicker { [self] (image) in
             guard let image = image else { return }
 
@@ -104,20 +104,14 @@ extension NewProjectPresenterImpl: ProjectEditorCellViewModelDelegate {
         }
     }
     
-    func didEdit(fragment: ImageFragment) {
-        guard let image = fragment.image else { return }
+    func didEdit(fragment: TextFragment, for index: Int) {
+        coordinator.navigateToEditText(fragment.text ?? "") { [self] (text) in
+            fragment.text = text
+            
+            view?.reloadRow(for: IndexPath(row: index, section: .zero))
 
-        coordinator.navigateToEditImage(image)
-    }
-    
-    func didRemove(fragment: ImageFragment, for index: Int) {
-        guard fragment.image != nil else { return }
-        
-        fragment.image = nil
-        
-        view?.reloadRow(for: IndexPath(row: index, section: .zero))
-        
-        updatePreview()
+            updatePreview()
+        }
     }
     
 }

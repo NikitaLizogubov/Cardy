@@ -2,48 +2,43 @@
 //  ImageAssetTableViewCell.swift
 //  Сardy
 //
-//  Created by Nikita Lizogubov on 01.10.2022.
+//  Created by Nikita Lizogubov on 08.10.2022.
 //
 
 import UIKit
 
-class ImageAssetTableViewCell: UITableViewCell, CollectionCell {
-
-    // MARK: - @IBOutlets
+final class ImageAssetTableViewCell: UITableViewCell, Cell {
     
-    @IBOutlet private weak var assetPreviewImageView: UIImageView!
-    @IBOutlet private weak var assetTitleLabel: UILabel!
-    @IBOutlet private weak var editButton: UIButton!
-    @IBOutlet private weak var removeButton: UIButton!
-    
+    // MARK: - IBOutlets
     // MARK: - Public properties
     
-    var viewModel: ImageAssetTableViewCellViewModelType? {
+    var viewModel: (ImageAssetCellViewModelInputProtocol & ImageAssetCellViewModelOutputProtocol)? {
         didSet {
             bindViewModel()
         }
     }
     
+    // MARK: - Private properties
+    // MARK: - Override
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setupUI()
+    }
+    
+    // MARK: - Public methods
     // MARK: - Private methods
+    
+    private func setupUI() {
+        
+    }
     
     private func bindViewModel() {
         guard let viewModel = viewModel else { return }
- 
-        assetPreviewImageView.image = viewModel.assetPreviewImage
-        assetTitleLabel.text = viewModel.assetTitle
         
-        editButton.setTitle("", for: .normal)
-        removeButton.setTitle("", for: .normal)
     }
     
     // MARK: - Actions
-    
-    @IBAction private func didEdit(_ sender: Any) {
-        viewModel?.didEdit()
-    }
-    
-    @IBAction private func didRemove(_ sender: Any) {
-        viewModel?.didRemove()
-    }
     
 }
