@@ -34,7 +34,7 @@ final class NewProjectCoordinatorImpl: Coordinator {
         let presenter = NewProjectPresenterImpl(
             coordinator: self,
             view: viewController,
-            fragments: dependency.fragments,
+            content: dependency.content,
             canvasEngine: dependency.canvasEngine,
             cellViewModelFactory: dependency.cellViewModelFactory
         )

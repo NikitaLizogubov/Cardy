@@ -8,7 +8,7 @@
 import Foundation
 
 struct ProjectEntityDependency {
-    let fragments: [Fragment]
+    let content: Content
     let canvasEngine: CanvasEngine
     let cellViewModelFactory: ProjectEditorCellViewModelFactory
 }

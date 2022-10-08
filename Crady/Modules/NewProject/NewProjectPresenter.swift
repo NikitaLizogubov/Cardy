@@ -27,7 +27,7 @@ final class NewProjectPresenterImpl {
     // Injection
     private let coordinator: NewProjectCoordinator
     private weak var view: NewProjectView?
-    private let fragments: [Fragment]
+    private let content: Content
     private let canvasEngine: CanvasEngine
     private let cellViewModelFactory: ProjectEditorCellViewModelFactory
     
@@ -36,13 +36,13 @@ final class NewProjectPresenterImpl {
     init(
         coordinator: NewProjectCoordinator,
         view: NewProjectView,
-        fragments: [Fragment],
+        content: Content,
         canvasEngine: CanvasEngine,
         cellViewModelFactory: ProjectEditorCellViewModelFactory
     ) {
         self.coordinator = coordinator
         self.view = view
-        self.fragments = fragments
+        self.content = content
         self.canvasEngine = canvasEngine
         self.cellViewModelFactory = cellViewModelFactory
     }
@@ -50,7 +50,7 @@ final class NewProjectPresenterImpl {
     // MARK: - Private methods
     
     private func updatePreview() {
-        canvasEngine.makeCanvas(fragments: fragments) { [unowned self] in
+        canvasEngine.makeCanvas(content: content) { [unowned self] in
             self.view?.update(previewImage: $0)
         }
     }
@@ -62,7 +62,7 @@ final class NewProjectPresenterImpl {
 extension NewProjectPresenterImpl: NewProjectPresenterInput {
     
     var numberOfItemsInSection: Int {
-        fragments.count
+        content.fragments.count
     }
     
     var backgroundColor: UIColor {
@@ -81,7 +81,7 @@ extension NewProjectPresenterImpl: NewProjectPresenterOutput {
     
     func cellViewModel(for indexPath: IndexPath) -> CollectionCellViewModel? {
         let index = indexPath.row
-        let fragment = fragments[index]
+        let fragment = content.fragments[index]
         
         return cellViewModelFactory.make(fragment: fragment, for: index, with: self)
     }
@@ -108,6 +108,16 @@ extension NewProjectPresenterImpl: ProjectEditorCellViewModelDelegate {
         guard let image = fragment.image else { return }
 
         coordinator.navigateToEditImage(image)
+    }
+    
+    func didRemove(fragment: ImageFragment, for index: Int) {
+        guard fragment.image != nil else { return }
+        
+        fragment.image = nil
+        
+        view?.reloadRow(for: IndexPath(row: index, section: .zero))
+        
+        updatePreview()
     }
     
 }

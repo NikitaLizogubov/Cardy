@@ -6,36 +6,44 @@
 //
 
 import UIKit
-import AVFoundation
 
 protocol RenderLayeFactory {
-    func makeImageLayers(_ images: [UIImage], positions: [CGPoint], for track: AVMutableCompositionTrack) -> [CALayer]
-    func makeVideLayer(for track: AVMutableCompositionTrack) -> CALayer
-    func makeAnimationLayer(for track: AVMutableCompositionTrack) -> CALayer
+    func makeFragmentLayer(fragment: Fragment, size: CGSize) -> CALayer
+    func makeVideLayer(size: CGSize) -> CALayer
+    func makeAnimationLayer(size: CGSize) -> CALayer
 }
 
-struct RenderLayeFactoryImpl { }
+struct RenderLayeFactoryImpl {
+    
+    // MARK: - Private properties
+    
+    private let fragmentFactory: FragmentLayerFactory
+    
+    // MARK: - Init
+    
+    init(fragmentFactory: FragmentLayerFactory) {
+        self.fragmentFactory = fragmentFactory
+    }
+    
+}
 
 // MARK: - RenderLayeFactory
 
 extension RenderLayeFactoryImpl: RenderLayeFactory {
     
-    func makeImageLayers(_ images: [UIImage], positions: [CGPoint], for track: AVMutableCompositionTrack) -> [CALayer] {
-        let trackSize = track.naturalSize
+    func makeFragmentLayer(fragment: Fragment, size: CGSize) -> CALayer {
+        let position = fragment.position
         
-        return images.enumerated().map({ (index, image) in
-            let point = CGPoint(x: trackSize.width - positions[index].x, y: trackSize.height - positions[index].y)
-            let frame = CGRect(origin: point, size: CGSize(width: 400.0, height: 400.0))
-            
-            let imageLayer = CALayer()
-            imageLayer.contents = image.cgImage
-            imageLayer.frame = frame
-            return imageLayer
-        })
+        let fragmentSize = CGSize(width: 400.0, height: 400.0)
+        
+        let point = CGPoint(x: abs(position.x - size.width), y: position.y - fragmentSize.height)
+        let frame = CGRect(origin: point, size: fragmentSize)
+        
+        return fragmentFactory.make(frame: frame, fragment: fragment)
     }
     
-    func makeVideLayer(for track: AVMutableCompositionTrack) -> CALayer {
-        let frame = CGRect(origin: .zero, size: track.naturalSize)
+    func makeVideLayer(size: CGSize) -> CALayer {
+        let frame = CGRect(origin: .zero, size: size)
         
         let videoLayer = CALayer()
         videoLayer.frame = frame
@@ -43,8 +51,8 @@ extension RenderLayeFactoryImpl: RenderLayeFactory {
         return videoLayer
     }
     
-    func makeAnimationLayer(for track: AVMutableCompositionTrack) -> CALayer {
-        let frame = CGRect(origin: .zero, size: track.naturalSize)
+    func makeAnimationLayer(size: CGSize) -> CALayer {
+        let frame = CGRect(origin: .zero, size: size)
         
         let animationLayer = CALayer()
         animationLayer.frame = frame

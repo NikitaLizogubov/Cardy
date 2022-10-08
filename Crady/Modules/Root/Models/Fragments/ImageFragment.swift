@@ -9,6 +9,7 @@ import UIKit
 
 final class ImageFragment: Fragment {
     let position: CGPoint
+    
     let borderWith: CGFloat
     let borderColor: UIColor
     

@@ -10,6 +10,7 @@ import UIKit
 protocol ProjectEditorCellViewModelDelegate: AnyObject {
     func didUpload(fragment: ImageFragment, for index: Int)
     func didEdit(fragment: ImageFragment)
+    func didRemove(fragment: ImageFragment, for index: Int)
 }
 
 protocol ProjectEditorCellViewModelFactory {
@@ -25,10 +26,12 @@ extension ProjectEditorCellViewModelFactoryImpl: ProjectEditorCellViewModelFacto
     func make(fragment: Fragment, for index: Int, with delegate: ProjectEditorCellViewModelDelegate) -> CollectionCellViewModel? {
         switch fragment {
         case let fragment as ImageFragment:
-            let viewModel = ProjectAssetTableViewCellViewModel(asset: fragment.image, uploadHandler: {
+            let viewModel = ImageAssetTableViewCellViewModel(asset: fragment.image, uploadHandler: {
                 delegate.didUpload(fragment: fragment, for: index)
             }, editHandler: {
                 delegate.didEdit(fragment: fragment)
+            }, removeHandler: {
+                delegate.didRemove(fragment: fragment, for: index)
             })
             return viewModel
         default:

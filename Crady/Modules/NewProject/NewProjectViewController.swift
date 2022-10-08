@@ -21,7 +21,7 @@ final class NewProjectViewController: UIViewController {
     @IBOutlet private weak var previewImageView: UIImageView!
     @IBOutlet private weak var assetsTableView: UITableView! {
         didSet {
-            assetsTableView.register(ProjectAssetTableViewCell.nib, forCellReuseIdentifier: ProjectAssetTableViewCell.reuseIdentifier)
+            assetsTableView.register(ImageAssetTableViewCell.nib, forCellReuseIdentifier: ImageAssetTableViewCell.reuseIdentifier)
             assetsTableView.dataSource = self
             assetsTableView.delegate = self
         }
@@ -63,8 +63,8 @@ extension NewProjectViewController: UITableViewDataSource {
         guard let viewModel = presenter?.cellViewModel(for: indexPath) else { return UITableViewCell() }
         
         switch viewModel {
-        case let viewModel as ProjectAssetTableViewCellViewModelType:
-            let cell = ProjectAssetTableViewCell.make(tableView, for: indexPath)
+        case let viewModel as ImageAssetTableViewCellViewModelType:
+            let cell = ImageAssetTableViewCell.make(tableView, for: indexPath)
             cell.viewModel = viewModel
             return cell
         default:
